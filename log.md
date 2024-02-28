@@ -30,3 +30,9 @@ The notebooks so far cover supervised learning, shallow and deep networks, losse
 P.s. One of them Rickrolls you... you'll have to work through them all to find which.
 
 https://udlbook.github.io/udlbook/
+
+### Day 3: February 27, 2024
+
+### Personal Assistant's speech ability
+
+coding with Python that enables speech ability. Use pyttsx3 (text-to-speech). The [Hello World!](https://github.com/ylgatatooine/100-days-of-code/blob/master/src/StockMarketAnalysis/Speaker.py)
