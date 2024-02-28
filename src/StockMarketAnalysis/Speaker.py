@@ -1,19 +1,33 @@
 import pyttsx3
+import datetime
 
 engine = pyttsx3.init()
 voices = engine.getProperty('voices')
 rate = 180
-
-# for voice in voices:
-#    engine.setProperty('voice', voice.id)
-#    print(voice.id)
-#    engine.say( voice.id + 'The quick brown fox jumped over the lazy dog.')
 engine.setProperty('voice', 'com.apple.voice.compact.en-GB.Daniel')
-engine.setProperty('rate',rate)
-engine.say('Why did the computer catch a cold?')
 engine.setProperty('rate', rate)
-engine.say('Because it left its windows open')
-engine.runAndWait()
+
+
+def speak(audio):
+    engine.say(audio)
+    engine.runAndWait()
+
+
+def wishme():
+    hour = int(datetime.datetime.now().hour)
+
+    if 0 <= hour < 12:
+        speak("Good Morning! It is " + hour + "o'clock.")
+    elif 12 <= hour < 18:
+        speak("Good Afternoon! It is " + hour + "o'clock.")
+    else:
+        speak("Good Evening! It is " + hour + "o'clock.")
+
+
+speak('Hello, this is your artificial intelligence assistant. Robert. ')
+
+strTime = datetime.datetime.now().strftime("%H:%M:%S")
+speak(f"Sir, the time is {strTime}")
 
 # engine = pyttsx3.init()
 # voices = engine.getProperty('voices')
