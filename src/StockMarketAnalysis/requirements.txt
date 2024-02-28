@@ -3,3 +3,6 @@ numpy
 matplotlib
 pandas_datareader
 yfinance
+
+py3-tts
+pyttsx3
