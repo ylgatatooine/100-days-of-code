@@ -1,41 +1,43 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QTabWidget
-from PyQt6.QtCore import QTimer
+import sys
+from PyQt6.QtWidgets import QApplication, QSystemTrayIcon, QWidget, QTabWidget
+from PyQt6.QtGui import QIcon
 
-from pomodoro_timer import PomodoroTimerTab
-from short_break_timer import ShortBreakTimerTab
-from long_break_timer import LongBreakTimerTab
+from timer_tab import TimerTab
+from menu import create_menu
 
-class PomoTimer(QMainWindow):
+class PomoTimer(QSystemTrayIcon):
     def __init__(self):
         super().__init__()
 
-        self.pomodoro_timer = QTimer(self)
-        self.short_break_timer = QTimer(self)
-        self.long_break_timer = QTimer(self)
+        self.setIcon(QIcon("resources/tiger.png"))
 
-        self.init_ui()
-
-    def init_ui(self):
-        self.setWindowTitle("Pomo Timer")
-        self.setGeometry(100, 100, 400, 200)
+        self.timer_tabs = [
+            TimerTab(25),  # Pomodoro
+            TimerTab(5),   # Short Break
+            TimerTab(15)   # Long Break
+        ]
 
         self.tab_widget = QTabWidget()
-        self.tab_widget.setTabPosition(QTabWidget.TabPosition.North)
-
-        pomodoro_tab = PomodoroTimerTab()
-        short_break_tab = ShortBreakTimerTab()
-        long_break_tab = LongBreakTimerTab()
-
-        self.tab_widget.addTab(pomodoro_tab, "Pomodoro")
-        self.tab_widget.addTab(short_break_tab, "Short Break")
-        self.tab_widget.addTab(long_break_tab, "Long Break")
-        self.tab_widget.setCurrentIndex(0)
-
-        self.setCentralWidget(self.tab_widget)
+        for i, timer_tab in enumerate(self.timer_tabs):
+            self.tab_widget.addTab(timer_tab, ["Pomodoro", "Short Break", "Long Break"][i])
 
         self.show()
 
+        self.show_timer_window()
+
+    def show_timer_window(self):
+        self.tab_widget.show()
+
+    def update_icon(self, minutes, seconds):
+        # Update the tray icon based on the current time (minutes, seconds)
+        pass
+    def quit(self):
+        QApplication.quit()
+
 if __name__ == "__main__":
-    app = QApplication([])
+    app = QApplication(sys.argv)
+
     pomo_timer = PomoTimer()
-    app.exec()
+    create_menu(pomo_timer)  # Move the create_menu call here
+
+    sys.exit(app.exec())

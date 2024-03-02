@@ -1,7 +1,9 @@
-from PyQt6.QtCore import QTime, QTimer, Qt
+from PyQt6.QtCore import QTime, QTimer, Qt, pyqtSignal
 from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel
 
 class TimerTab(QWidget):
+    time_changed = pyqtSignal(int, int)  # Add this line to create the time_changed signal
+
     def __init__(self, duration_minutes):
         super().__init__()
 
@@ -61,3 +63,14 @@ class TimerTab(QWidget):
 
     def update_display(self):
         self.time_label.setText(self.current_timer_value.toString("mm:ss"))
+
+    def tick(self):
+        if self.current_time == QTime(0, 0):
+            self.timer.stop()
+            return
+
+        self.current_time = self.current_time.addSecs(-1)
+        self.time_label.setText(self.current_time.toString("mm:ss"))
+        self.time_changed.emit(self.current_time.minute(), self.current_time.second())  # Emit the signal here
+
+
