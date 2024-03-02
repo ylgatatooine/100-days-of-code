@@ -36,3 +36,30 @@ https://udlbook.github.io/udlbook/
 ### Personal Assistant's speech ability
 
 coding with Python that enables speech ability. Use pyttsx3 (text-to-speech). The [Hello World!](https://github.com/ylgatatooine/100-days-of-code/blob/master/src/StockMarketAnalysis/Speaker.py)
+
+
+### Day 4: February 29, 2024
+
+### Pomodoro Timer
+Investigate Python framework and example to create a Pomodoro Timer
+
+### Day 5: March 1, 2024
+
+### PomoTimer with PyQt6
+
+🚀 **Project Update - PomoTimer v0.1**
+
+Just wrapped up an intense coding session! In the past 2.5 hours, I dived into PyQt6 and crafted a basic clock. Exciting stuff! But then, I decided to level up and spent the next hour collaborating with ChatGPT to reimagine and simplify my PomoTimer (Pomodoro Timer).
+
+**PomoTimer v0.1 Features:**
+1. 🕰️ Large digit display for 25 minutes.
+2. 🔄 Dynamic button:
+   - Displays "Start" before the timer countdown.
+   - Switches to "Reset" during the timer completes.
+
+Check out the first version [PomoTimer Timer_UI](https://github.com/ylgatatooine/100-days-of-code/blob/master/src/PomoTimer/timer_ui.py)
+
+Stay tuned for more updates as we refine and expand the functionality! 🔥
+
+#CodingJourney #PomodoroTimer #PyQt6 #OpenSource
+
