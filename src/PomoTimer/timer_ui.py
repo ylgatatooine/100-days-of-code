@@ -1,8 +1,7 @@
-from PyQt6.QtWidgets import QApplication, QWidget, QVBoxLayout, QPushButton, QLabel
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QPushButton, QLabel, QMenuBar, QMenu
 from PyQt6.QtCore import QTimer, QTime, Qt
-from PyQt6.QtGui import QFont
 
-class PomodoroTimer(QWidget):
+class PomoTimer(QMainWindow):
     def __init__(self):
         super().__init__()
 
@@ -16,14 +15,17 @@ class PomodoroTimer(QWidget):
         self.init_ui()
 
     def init_ui(self):
-        self.setWindowTitle("Pomodoro Timer")
+        self.setWindowTitle("Pomo Timer")
         self.setGeometry(100, 100, 400, 200)
+
+        menubar = self.menuBar()
+        menubar.setNativeMenuBar(False)  # For macOS compatibility
 
         self.time_label = QLabel()
         self.time_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
-        font = QFont()
-        font.setPointSizeF(10 * self.time_label.font().pointSizeF())  # Make the font 10 times larger
+        font = self.time_label.font()
+        font.setPointSizeF(10 * font.pointSizeF())  # Make the font 10 times larger
         self.time_label.setFont(font)
         self.update_display()
 
@@ -33,6 +35,10 @@ class PomodoroTimer(QWidget):
         layout = QVBoxLayout(self)
         layout.addWidget(self.time_label)
         layout.addWidget(self.start_reset_button)
+
+        central_widget = QWidget()
+        central_widget.setLayout(layout)
+        self.setCentralWidget(central_widget)
 
         self.show()
 
@@ -69,5 +75,5 @@ class PomodoroTimer(QWidget):
 
 if __name__ == "__main__":
     app = QApplication([])
-    pomodoro_timer = PomodoroTimer()
+    pomo_timer = PomoTimer()
     app.exec()
