@@ -20,7 +20,6 @@ handler = logging.StreamHandler(sys.stdout)
 handler.setFormatter(CompactFormatter(logFmt, "%Y-%m-%d %H:%M:%S"))
 logger = makeLogger(None, handler=handler, level='INFO')
 
-
 def setTrayIcon(app, mainWindow):
     app.setQuitOnLastWindowClosed(False)
     icon = QIcon(APP_ICON)
@@ -52,7 +51,6 @@ def main():
 
     app = Qt.QApplication(sys.argv)
 
-    # https://bugs.documentfoundation.org/show_bug.cgi?id=125934
     app.setDesktopFileName('cherrytomato.desktop')
 
     settings = CherryTomatoSettings.createQT()

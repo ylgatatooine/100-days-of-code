@@ -118,7 +118,7 @@ Another examples:
 - You can play and pause music on Spotify with commands:
 
     `dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play`
-    
+    [main_ui.py](CherryTomato%2Fmain_ui.py)[main_ui.py](CherryTomato%2Fmain_ui.py)
     `dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause`
 
 - You can send messages to your phone with KDE Connect:
