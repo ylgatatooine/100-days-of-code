@@ -1,5 +1,20 @@
-from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QPushButton, QLabel, QMenuBar, QMenu
+from PyQt6.QtWidgets import QApplication, QMainWindow, QVBoxLayout, QWidget, QPushButton, QLabel, QDialog, QHBoxLayout
 from PyQt6.QtCore import QTimer, QTime, Qt
+from PyQt6.QtGui import QAction
+
+class AboutDialog(QDialog):
+    def __init__(self):
+        super().__init__()
+
+        self.setWindowTitle("About")
+        self.setGeometry(200, 200, 300, 100)
+
+        layout = QVBoxLayout(self)
+
+        about_label = QLabel("Program Author: Yuer", self)
+        about_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+
+        layout.addWidget(about_label)
 
 class PomoTimer(QMainWindow):
     def __init__(self):
@@ -18,9 +33,6 @@ class PomoTimer(QMainWindow):
         self.setWindowTitle("Pomo Timer")
         self.setGeometry(100, 100, 400, 200)
 
-        menubar = self.menuBar()
-        menubar.setNativeMenuBar(False)  # For macOS compatibility
-
         self.time_label = QLabel()
         self.time_label.setAlignment(Qt.AlignmentFlag.AlignCenter)
 
@@ -32,15 +44,29 @@ class PomoTimer(QMainWindow):
         self.start_reset_button = QPushButton("Start", self)
         self.start_reset_button.clicked.connect(self.start_reset_timer)
 
+        self.about_label = QLabel("About", self)
+        self.about_label.setStyleSheet("")
+        self.about_label.setAlignment(Qt.AlignmentFlag.AlignRight | Qt.AlignmentFlag.AlignTop)
+        self.about_label.setCursor(Qt.CursorShape.PointingHandCursor)
+        self.about_label.mousePressEvent = self.show_about_dialog
+
         layout = QVBoxLayout(self)
         layout.addWidget(self.time_label)
         layout.addWidget(self.start_reset_button)
+
+        horizontal_layout = QHBoxLayout()
+        horizontal_layout.addWidget(self.about_label, Qt.AlignmentFlag.AlignRight)
+        layout.addLayout(horizontal_layout)
 
         central_widget = QWidget()
         central_widget.setLayout(layout)
         self.setCentralWidget(central_widget)
 
         self.show()
+
+    def show_about_dialog(self, event):
+        about_dialog = AboutDialog()
+        about_dialog.exec()
 
     def start_reset_timer(self):
         if not self.timer_running:
