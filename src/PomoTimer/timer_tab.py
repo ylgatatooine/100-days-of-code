@@ -1,5 +1,7 @@
 from PyQt6.QtCore import QTime, QTimer, Qt, pyqtSignal
-from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel
+from PyQt6.QtWidgets import QWidget, QVBoxLayout, QPushButton, QLabel, QCheckBox
+from voice_alert import VoiceAlert
+from __init__ import ALERT_MINUTES
 
 class TimerTab(QWidget):
     time_changed = pyqtSignal(int, int)  # Add this line to create the time_changed signal
@@ -11,8 +13,13 @@ class TimerTab(QWidget):
         self.current_timer_value = self.duration
         self.timer_running = False
 
+        self.alert_enabled = True
+        self.alert_minutes = ALERT_MINUTES
+
         self.timer = QTimer(self)
         self.timer.timeout.connect(self.update_timer)
+
+        self.voice_alert = VoiceAlert()
 
         self.init_ui()
 
@@ -33,6 +40,30 @@ class TimerTab(QWidget):
         layout.addWidget(self.time_label)
         layout.addWidget(self.start_reset_button, alignment=Qt.AlignmentFlag.AlignCenter)
 
+        self.alert_checkbox = QCheckBox("Alert", self)
+        self.alert_checkbox.setChecked(True)
+        self.alert_checkbox.stateChanged.connect(self.alert_changed)
+
+        layout.addWidget(self.time_label)
+        layout.addWidget(self.start_reset_button, alignment=Qt.AlignmentFlag.AlignCenter)
+        layout.addWidget(self.alert_checkbox, alignment=Qt.AlignmentFlag.AlignCenter)
+
+    def alert_changed(self, state):
+        self.alert_enabled = state == Qt.CheckState.Checked
+
+    def update_timer(self):
+        self.current_timer_value = self.current_timer_value.addSecs(-1)
+        self.update_display()
+
+        for alert_minute in self.alert_minutes:
+            if self.alert_enabled and self.current_timer_value.minute() == alert_minute and self.current_timer_value.second() == 0:
+                self.voice_alert.speak(f"{alert_minute} minute{'s' if alert_minute != 1 else ''} left")
+
+        if self.current_timer_value == QTime(0, 0):
+            self.timer.stop()
+            self.timer_running = False
+            self.start_reset_button.setText("Start")
+
     def start_reset_timer(self):
         if not self.timer_running:
             self.start_timer()
@@ -45,14 +76,14 @@ class TimerTab(QWidget):
             self.start_reset_button.setText("Reset")
             self.timer.start(1000)
 
-    def update_timer(self):
-        self.current_timer_value = self.current_timer_value.addSecs(-1)
-        self.update_display()
-
-        if self.current_timer_value == QTime(0, 0):
-            self.timer.stop()
-            self.timer_running = False
-            self.start_reset_button.setText("Start")
+    # def update_timer(self):
+    #     self.current_timer_value = self.current_timer_value.addSecs(-1)
+    #     self.update_display()
+    #
+    #     if self.current_timer_value == QTime(0, 0):
+    #         self.timer.stop()
+    #         self.timer_running = False
+    #         self.start_reset_button.setText("Start")
 
     def reset_timer(self):
         self.timer.stop()
