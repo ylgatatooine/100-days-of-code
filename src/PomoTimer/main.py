@@ -4,6 +4,8 @@ from PyQt6.QtGui import QIcon
 
 from timer_tab import TimerTab
 from menu import create_menu
+from log import Log
+
 
 class PomoTimer(QSystemTrayIcon):
     def __init__(self):
@@ -24,6 +26,9 @@ class PomoTimer(QSystemTrayIcon):
         self.show()
 
         self.show_timer_window()
+
+        log = Log()
+        log.info("PomoTimer started")
 
     def show_timer_window(self):
         self.tab_widget.show()
