@@ -70,10 +70,11 @@ PomoTimer has 3 modes - Pomodoro, short break, long break.
 
 ### Day 6: March 4th, 2024
 
-### Pomodoro timer v0.7
+### 1. Pomodoro timer v0.7
 PomoTimer can be configured to have audio alert, and write to logs. 
 
-### Rag application with Mistral 7B running on local machine, langchain, chromadb
+### 2. Rag application with Mistral 7B running on local machine, langchain, chromadb
 v0.1 Mistral7B running locally with ollama, and langchain to read files, and analysis those files. 
+Reference is [this doc](https://medium.com/@rubentak/talk-to-your-files-in-a-local-rag-application-using-mistral-7b-langchain-and-chroma-db-no-2b4ba77358e0)
 
 
