@@ -1,3 +1,6 @@
 langchain_tutorials/bin/
 langchain_tutorials/include/
 langchain_tutorials/lib/
+langchain_tutorials/.ipynb_checkpoints/
+langchain_tutorials/etc/
+langchain_tutorials/share/
