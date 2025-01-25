@@ -4,3 +4,7 @@ langchain_tutorials/lib/
 langchain_tutorials/.ipynb_checkpoints/
 langchain_tutorials/etc/
 langchain_tutorials/share/
+
+youtuber/bin/
+youtuber/include/
+youtuber/lib/
