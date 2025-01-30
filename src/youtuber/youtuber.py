@@ -55,9 +55,26 @@ class Youtuber:
 if __name__ == "__main__":
     # Input YouTube video URL
     video_url = input("Enter the YouTube video URL: ")
+    video_id = re.search(r"v=([a-zA-Z0-9_-]+)", video_url).group(1)
 
     # Fetch and print the transcript
     youtuber = Youtuber()
     transcript = youtuber.get_transcript_by_url(video_url)
+    
+    # Write the transcript to a file
+    try:
+        # Extract the title of the talk from the transcript
+        # title = re.search(r"Title: (.+)", transcript).group(1)
+        # Create a valid filename using the video ID
+        filename = f"{video_id}.txt"
+        
+        with open(filename, "w") as file:
+            # file.write(f"Title: {title}\n\n")
+            file.write(transcript)
+        
+        print(f"Transcript saved to {filename}")
+    except Exception as e:
+        print(f"Error writing transcript to file: {e}")
+
     print("\nTranscript:\n")
-    print(transcript)
+    #print(transcript)
