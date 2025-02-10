@@ -1,0 +1,1308 @@
+[Music]
+all right hello everyone welcome to cost
+optimizing existing amazon dyno db
+workloads my name is greg krohn i'm a
+senior dynamodb specialist solution
+architect with aws
+i'm joined today by julie patil a
+solutions architect for dynamodb as well
+so let's go and get started
+so what we're here today to talk about
+is
+existing dynamodb workload cost
+optimization
+there's a lot of documentation out there
+and other talks about you know designing
+for cost from the start for your schema
+but really let's say today you've
+already got a dynamodb table in
+production and it's costing you a little
+more than you expected or or maybe costs
+aren't scaling
+the way you expected either so what we
+want to do is we want to kind of look
+for some quick wins here some some
+optimizations we can do
+on the table that don't require a full
+redesign of your code base and really
+just take the best advantage of dynamodb
+so we want to focus here on on
+efficiently operating our table scaling
+appropriately choosing the right
+uh functionalities that dynamodb offers
+and and taking advantage of it
+and remember this is an iterative
+process we we don't just create a
+dynamodb table and expect it to
+live on forever just like every other
+service either on-prem or in the cloud
+you always got to keep an eye on the its
+pulse and see where things are going and
+optimize from there
+so what we're going to take a look at
+today are various approaches uh we're
+going to start off with
+talking about tagging your tables
+autonomously we really want to be able
+to know where our costs are coming from
+at the table level we also want to
+figure out what capacity mode works best
+for our table so we're going to discuss
+how to pick the right capacity mode in
+dynamodb
+we also want to make sure we're right
+sizing our capacity we don't want to
+over provision we also don't want to
+over provision there's a fine line we
+have to tow here
+and a part of that will also choose the
+right auto scaling settings if we're
+using provision capacity
+from there
+julie will take over to talk about using
+the right table class
+we've got some new launches recently
+that let you
+choose what storage class as well as
+some other options to
+fit your workload the best
+we also want to figure out if we have
+any unused tables or indexes it doesn't
+do us any good having something
+provisioned but unused
+and and we want to know how we can find
+those those resources and clear them out
+if they're not really needed
+you want to look for poor table usage
+patterns
+there's
+there's ultimately various dyno db apis
+that are available and not all of them
+work best for every option so we're
+going to deep dive into
+what patterns maybe aren't the best long
+term and and how to
+replace them
+and then we'll also talk about using
+event stream filtering on lambda so
+extra stream events that come into your
+alumna functions maybe you don't need to
+process all of them and we can filter
+them at the stream level
+so starting with tag tagging
+really in cost explorer everything will
+get lumped together if you don't tag so
+when you when you create a dynamodb
+table you want to place
+business tags on your table so
+effectively we need to know
+what table belongs to maybe what part of
+your organization what specific service
+what application
+having that tagging will let us take
+this graph of sort of lump
+billing metrics that we see in cost
+explorer
+as you can see here we're grouping by
+usage type um
+for november we saw a large spike or at
+least a large amount of right capacity
+unit hours build to our account
+and we don't really know where to go
+from here in terms of who what table or
+what service is contributing
+we can only see at the region level
+so now once we've put tagging in place
+what we can actually do is we can group
+by these tags in cost explorer
+so on the left you see november had a
+large amount of
+billing contributed to a table called
+tweets in this account
+well that lines up pretty well to that
+previous chart we saw for a large number
+of write capacity units maybe a new
+service launch that loads tweets into a
+table and it was kind of a one-time
+thing you see december and january that
+that table billing fell off but we
+really didn't know who contributed to
+that until we tagged these
+now we can also go further and on the
+right uh chart you see we've filtered
+down by the tweets table and now we can
+still group by usage type so we can
+break down that specific tables billing
+by what kind of usage they contributed
+so
+we see here still that that they
+contributed a lot of amount of write
+capacity hours which means that there
+are a lot of rights against that table
+so
+let's say we have these tables in
+production how do we go and tag them
+effectively
+now we can go into the dynamodb console
+and just use the tag editor that's built
+in so you see on the top left we've just
+done a tag name or a tag key of table
+name and a tag value of tweets that's
+one way to do it you can actually do
+this via the cli you see we have dynmodb
+tag resource and we've added in our
+specific tag key and value there
+we've also made a little tagger utility
+that
+if you follow the link at the bottom of
+the slide it's amazon dynamodb tools is
+the repo under aws labs
+you can actually point this against your
+aws account and so long as this utility
+is given permissions via im it can go
+take the table name of every dynamo
+table in that region or account
+and tag it with that table name so it
+would kind of effectively do the same as
+you see above we found a table named
+tweets and we added the tag table name
+tweets
+so this is a great way if you've if you
+need some of this quick
+cost explorer tagging filter
+capabilities
+but you haven't tagged any of your
+tables we can kind of let this tiger
+utility go handle a large amount of
+tables and then you get that resource on
+filtering in cost explorer real quick
+so now that we have all of our tables
+tagged let's say we found
+at least like a top
+table that's contributing to our build
+so we've done that filtering and cost
+explorer to see where our usage is
+coming from we found the tweets table um
+now we want to go look into
+that specific table and understand
+maybe whether there's something we can
+do differently about how we've
+configured it so the first option we're
+going to look at is actually choosing
+the right capacity mode for our table
+in dyno db we provide two separate
+capacity mode options one is on demand
+which is going to be a pay-as-you-go
+style capacity where you're not giving
+us a specific headroom you just say
+handle all of my requests and as long as
+you have a
+even a fairly spiky workload we can
+manage that workload on the back end for
+you and
+you really don't have to think about
+capacity provisioned is more of a
+conventional style where you set a
+specific amount of resources that you
+want to have available and we will make
+that amount provisioned on your table
+and you can go from there
+so taking a closer look at on-demand
+this this graph on the left is a really
+great example of an on-demand workload
+where
+we have large spikes of traffic that
+sort of
+are random there doesn't seem to be a
+particular rhythm to them you may
+occasionally drop down to
+zero traffic maybe on the weekend no one
+uses the service we don't necessarily
+want to pay for a database that's
+sitting idle for the whole weekend
+now
+because we
+don't force you to provide a specific
+number for provisioning here you don't
+have to
+really keep in mind how much capacity
+you'll need from day to day or hour by
+hour we're just gonna kind of roll with
+that paper use model and and scale up
+and down for you behind the scenes so
+the the benefit here though is
+when when you have traffic spikes we
+don't have to you don't have to be aware
+of
+in ahead of time that that spike is
+coming and and you don't have to have an
+over provision table just to to tolerate
+that amount of extra traffic
+some things to keep in mind with on
+demand
+when you create a table we're going to
+start with a base throughput of 4 000 wc
+and 24 000 rcus
+so
+effectively we're creating a set number
+of
+partitions behind the scenes to handle
+your traffic
+but what happens over time is as you use
+this on-demand table we are always going
+to add enough extra partitions to be
+able to scale to twice the previous peak
+throughput that you've ever driven to
+the table
+so if today you drive ten thousand wcus
+to the table we will make sure there's
+enough partitions behind the scenes to
+scale
+immediately to twenty thousand
+so
+as your as your workload grows we're
+gonna naturally have that headroom built
+in
+now
+the uh the cool thing about on demand is
+there really is no maximum here the only
+limit is just how quickly you you beat
+your previous peak so we can't
+necessarily go from 10 000 today to a
+million in the next hour there will be
+some scaling behind the scenes so we
+have to make sure that we understand at
+least some of our workload pattern but
+in terms of going to production and
+day-to-day usage you can expect a nice
+carefree operational
+scaling
+on the table
+now on the other side of things we have
+provision capacity
+provision capacity as i said is where
+you set specific throughput levels on
+your table it's it's more of a
+more of a set the provision capacity
+occasionally um
+occasionally change it based on workload
+but we're not really expecting to
+tolerate significant spikes or changes
+in the workload so what
+we're able to do on provision capacity
+is we set our reading rights separately
+so maybe you have a table that has a lot
+of right throughput but almost no reads
+or vice versa we can tune those
+independently to make sure we're not
+overpaying for for one or the other
+now one of the benefits of provision
+capacity is if you have a very steady
+workload where it's you have like a
+predictable ramp up maybe in the morning
+or a specific time of day and it
+gradually builds up and then it comes
+back down at night this can actually be
+uh more cost efficient than on demand
+but with that predictability um it
+really is where on demand just is built
+to to tolerate unpredictability so if we
+have unpredictability in a provision
+capacity table it is possible to have
+throttling and all throttling really
+means is
+you thought you needed 10 000 rights and
+all of a sudden you needed 20 000 for an
+hour well we have to be able to scale up
+to meet that if the scaling is not able
+to happen quick enough we're gonna tell
+your your client okay we're throttling
+you you need to kind of just
+cool it down a little bit and then come
+back for
+another attempt later so
+the challenge here with provision
+capacity is we also don't want to over
+provision
+if we set these throughput levels too
+high
+but then we only use a fraction of them
+we're effectively wasting money because
+we've provisioned for a peak that didn't
+happen
+so
+with auto scaling
+we can actually
+set specific
+targets as well as
+minimums and maximums and what auto
+scaling is going to do is going to try
+and
+follow the curve of your traffic on the
+table
+so you see here on in the console
+we can turn on auto scaling
+and minimum and maximum think of those
+as just
+sort of billing and throttling
+protection so
+minimum capacity units is is almost more
+of a
+i want to prevent throttling by keeping
+this amount of capacity available
+maximum is i want to prevent runaway
+bill in case something goes wrong with a
+new code release
+but ultimately those are just
+guard rails target utilization is where
+you really want to focus your efforts
+for cost optimization because
+what target utilization tells us is how
+much of this headroom to always keep on
+your table
+it will
+in the instance of this with 70 target
+utilization
+there should almost always be 30 percent
+of overhead capacity sitting and ready
+for a short-term spike beyond that 70 so
+if you make a bigger number in target
+utilization that means there's going to
+be less headroom more chance of
+throttling but you're also leaving
+less capacity on the table when it comes
+to actual consumption
+if you lower that number you're you're
+going to be
+increasing your bill versus actual
+traffic but you're avoiding throttling
+so this is a good number to play with to
+figure out what your comfort zone is
+between throttling and cost efficiency
+so
+now if we look at auto scaling in action
+here we can see these two graphs the one
+on the left is for reads on the right is
+for rights
+the blue line is what's been provisioned
+on these tables and the orange line is
+what what we saw actually consumed so
+we can ski we can see auto scaling
+kind of flowing with that uptick in in
+what looks like the morning and then
+gradually scaling back down overnight
+but then the next morning you could see
+it come right back up and and toe that
+line so
+if we think of a
+more instance based database we would
+probably provision a certain number of
+instances for peak so maybe in this
+example on the left we would set a peak
+at sixty thousand
+if you envision a line at sixty thousand
+and then take the difference between
+that 60 000 line and the blue line
+that's money that auto scaling has saved
+you
+so it's very effective at following
+those sort of steady and
+predictable workloads and saving you
+money
+over the course of a given day
+because we can't have a human constantly
+looking at this
+now behind the scenes auto scaling is
+actually built on cloud watch so
+when we create a table with auto scaling
+we're actually going to make a
+cloudwatch alarm
+that is tracking the metrics of the
+table so
+what what's happening is the is
+cloudwatch is constantly looking at
+these metrics taking a look at the
+target utilization of the table so it
+applies that target utilization
+percentage
+math against what the current metrics
+are
+and it figures out whether based on the
+last
+two minutes of traffic whether it needs
+to scale up and then if if it does then
+what it's going to do is going to call
+the aws auto scaling service
+trigger that auto scaling event
+and the auto scaling service talks to
+dynamodb to actually update that table
+capacity on your behalf
+so
+there is obviously some delay here this
+is an asynchronous process so
+this is really where choosing between on
+demand and provision comes into play
+because
+provisioned with auto scaling has this
+sort of a little bit of a delay to it so
+if you have a spike that lasts only
+maybe a minute or so
+auto scaling isn't going to be able to
+help if you have this spike where maybe
+you're ingesting a large amount of data
+and you expect it to last an hour auto
+scaling will
+eventually catch up to that traffic and
+it will get the table in the right spot
+we'll talk a bit later about how to
+handle a large data loads in an
+effective way while still using auto
+scaling though
+now
+another thing to keep in mind with
+capacity on dynodb tables is we do have
+the concept of burst capacity
+so
+sudden spikes do happen we we fully
+understand that we we're not going to
+um immediately throttle a table just
+because for one
+one moment you went over your provision
+capacity we actually keep buckets with
+five minutes of capacity available for
+your table so
+assuming you haven't used more capacity
+than you provisioned for the last five
+minutes you have five minutes of that
+capacity available in the bucket so you
+can see in this chart the traffic was or
+the table was provisioned at five
+bright capacity units and we have a
+couple spikes that actually go around 10
+to 25
+momentarily but we don't actually see
+throttling on this table because they're
+a short-term spike and they use that
+burst capacity bucket while we have it
+so while there may be some situations
+where it looks like auto scaling can't
+keep up with spikes on your table
+sometimes we can also just tolerate
+these spikes with burst capacity and we
+don't have to go to on demand just
+because the spikes exist
+what we need to keep an eye out for
+though is sustained traffic above
+provision levels
+if if you are consistently needing five
+times your table capacity for the first
+minute of every hour
+that's probably not going to work very
+well in the long run for auto scaling or
+provision capacity i'd suggest we start
+looking into on demand
+so
+a lot of people will say provision
+capacity is always cheaper than on
+demand or
+they look at they look at the way things
+are billed and they'll say it's it's 80
+percent cheaper is this true
+now
+for a consistent for a flat steady
+workload with a perfectly provisioned
+capacity let's imagine a table that uses
+10 wcus all day every hour of the day
+yeah provision capacity would be 80
+cheaper
+on demand
+effectively ends up at roughly five
+times the cost in that perspective
+but once some variability and
+unpredictability comes into the workload
+you will always have some level of over
+provisioning on a provision capacity
+table
+it's unavoidable and let's be honest
+every real world database is going to
+have variability in its traffic
+i'm sure we all wish that we could have
+a perfectly flat workload but it's just
+not how it works
+so
+there becomes a bit of a
+decision point here where we have to
+figure out
+where
+our traffic lies between a flat and
+steady workload and a spiky workload
+so where we want to go with that is we
+want to start looking at our cloud watch
+charts for for the table
+now we look at those throughput
+consumption graphs so write capacity
+units read capacity units we want to
+look at what the throughput usage on the
+table is
+now
+if i'm looking at a table that has
+on-demand capacity
+i want to look for tall spikes
+and potentially drops back to zero
+if if we have a chart like that example
+for on demand earlier on where we have
+points in the day where nothing gets
+used or
+traffic goes from maybe uh 10 to a
+thousand wcus and and what seems to be
+moments
+that's a really great candidate for on
+demand and it will likely be cheaper
+now if we see a table with steady
+traffic that kind of is more of a sine
+wave just nice consistent growth and
+regression on the on the throughput we
+should probably look into moving that on
+into provision
+we still want to look out for those tall
+spikes though just because we can see
+that 99 of the day it's consistent we
+can't ignore the fact that maybe for
+parts of the day there's some spikiness
+now for a table that's currently in
+provision capacity like kind of the
+inverse here we want to make sure
+there's no tall spikes that are causing
+throttling we have another cloud watch
+metric for you to look at that's
+throttling events
+so
+if you start seeing throttling on your
+table we either need to look at re
+raising the capacity with auto scaling
+on that table or potentially moving it
+to on demand because the workloads
+become more spiky than we expected
+we also want to look for gaps in that
+usage if we start seeing
+situations where the table is just
+unused for periods of time particularly
+an hour or two
+that's still a good candidate for on
+demand
+if you're still seeing throttling while
+having enough provision capacity on the
+table
+there's another aspect here that we want
+to keep in mind is it is possible to
+have throttling at the partition level
+which would be based on having a hot key
+so maybe a given partition key is more
+actively used than you
+expected this is getting more into some
+schema level redesign but we suggest
+that if you go to take a look at
+cloudwatch contributor insights this is
+a newer launch of ours where once you
+enable it for a table it will actually
+tell you what your most actively used
+partitions
+and and keys are on the table so maybe
+you can trace down who's contributing to
+these throttles and take care of that
+from from a data perspective
+but at the table level you can at least
+be
+aware that you've scaled the table to an
+adequate capacity
+now on provision capacity we also want
+to take a look at whether there's bulk
+loads
+that exceed these thousands of ecu's
+that can also be contributing to
+throttling so
+maybe we take a look into breaking that
+bulk load out into a longer period of
+time or multiple partition keys
+all right so next we're going to take a
+look through a few examples of tables
+and kind of explain from a metrics
+perspective why they're either in a good
+or bad
+capacity
+so this example here we have a provision
+table
+and it has auto scaling enabled we can
+see
+that there's a fair bit of headroom for
+most of the table or the most of the day
+it looks like we're probably at
+something like a 50 or 60 percent target
+threshold so we have a bit of wasted
+capacity but it it's following the
+relatively steady curve of the of the uh
+graph fairly well you can see there's
+just a bit of spikiness on the
+consumption though it's not too steady
+like we're kind of bouncing back and
+forth by about 20 to 40 percent at a
+given a given time
+now
+i think this is a good one to keep in
+auto scaling and provision capacity the
+the one thing
+that kind of can give some people pause
+is on the right there you see the orange
+approaches the blue a little close
+now i think what happens here is
+for that momentary bit that's perfectly
+fine
+if we see that happening too frequently
+i'd get a little concerned and maybe
+look into changing that target threshold
+but i think we're in a good place here
+we're not wasting uh too much provision
+capacity and the consumption is staying
+at least
+relatively far enough away from the
+provisioned
+now this next one is
+a little different we see that this is
+still a provision capacity table
+but this consumption is actually getting
+really close to or potentially exceeding
+the provision capacity so we can almost
+expect here that we're using parts of
+our burst bucket to handle some of these
+spikes
+but for the most part the blue line is
+keeping over the orange line so our
+provision capacity is
+on the whole adequate
+this is a bit more of a gray area here i
+i think
+we could probably try this table out and
+on demand see how the bill changes maybe
+it'll go down it's probably going to be
+pretty close to the same but
+what we want to keep an eye out for
+particularly here is let's go look at
+the throttling events on this table if
+we're getting a lot of throttles
+we should probably try and raise
+or we should probably try and change
+that target threshold to have a little
+more overhead we might be able to absorb
+some of these spikes a little better
+and avoid some throttles but the more we
+do that the closer we get to on demand
+being a better candidate so
+this one's kind of a no good answer
+situation and we kind of want to
+take a look at both options as as we go
+remember that you can change back and
+forth between on demand and provision
+capacity once per day so you can give it
+a try for a given day and then change it
+back the next if it didn't look like it
+affected the bill in a good way
+now this last one should be pretty clear
+this is
+very spiky workload we fall back to zero
+traffic pretty regularly
+that spike isn't happening at a
+predictable part of the hour or it's not
+very long it's a pretty short spike so
+this is a really great candidate for on
+demand here
+the
+the
+provision capacity would really not be
+able to help us much here we'd be over
+provisioning by quite a large margin
+all right uh so thanks greg hi everyone
+i'm juhi our dynamodb specialist
+solutions architect at aws
+and let's start with the next part of
+this webinar today uh by diving into the
+table classes
+so we've always had this standard table
+class
+which balances the costs of storage and
+throughput
+but recently we announced a new table
+class called the standard infrequent
+access it is basically for workloads
+where storage is a dominant cost
+it reduces your storage cost by around
+60 percent
+and it provides the same performance for
+your reads and rights
+the throughput costs are approximately
+25 percent higher with this table class
+so it is essentially suitable for
+use cases where you write to a table
+making it storage heavy but then you do
+not access it very frequently so
+something like time series data or log
+metadata for instance
+so apart from your understanding of the
+use case a general guideline to identify
+candidates for the standard ia class
+is that the storage costs for the table
+uh exceed 50 percent of the total
+throughput costs for the table
+so the choice of table class affects a
+few pricing dimensions
+so some of these pricing dimensions for
+example are
+the throughput costs for
+local and global tables and also the
+storage costs which are basically going
+to reduce
+it affects your gsi costs since gsis
+inherit the table class from their
+parent right
+and then this is an important
+consideration because
+if you have a table that you write a lot
+to but you don't touch the table however
+you are actually reading from the gsi
+heavily then maybe it's going to affect
+the choice and the calculation because
+the gsi throughput is going to be
+charged based on the new the in frequent
+access
+table class right
+and then additionally uh reserved
+capacity is not supported with this
+standard ia class so if you are relying
+heavily on reserved capacity we might
+need to rethink the choice and the
+calculations
+so what you would basically do is to
+calculate the storage and throughput
+costs for each table and shear size and
+then see if it meets the criteria of
+storage costs being greater than 50 of
+the throughput costs
+so based on different throughput modes
+the read write calculations can differ
+greg walked you through the provision
+mode and the on-demand mode so basically
+with provision mode it's fairly easy to
+plug in your rc wcu values
+multiply them out with the costs and
+compare them right so you you basically
+know that one is higher than the other
+but it's important to keep in mind that
+if your table has a lot of auto scaling
+and if you're doing instantaneous
+calculations at a given point of time
+then your comparisons might not be valid
+anymore
+so it is important to take all the auto
+scaling activity into account when you
+are actually doing all these
+calculations
+with on demand mode you want to look at
+your consumed capacity history in cloud
+watch to figure out the throughput costs
+so we do not have a cloud watch
+metrics for the storage unfortunately
+but with with the capacity you with the
+capacity matrix you get an idea of the
+capacity costs and for storage what you
+basically do is either look at the
+instantaneous values by using the cli or
+console
+or it basically will help you figure out
+how big a table is right now and then
+you do manual growth estimates something
+like if you think your data is going to
+grow by 20 a month so factor that growth
+into your calculations and see what your
+projected table costs are going to be
+so as mentioned earlier
+the table class also affects global
+tables so if you are using global tables
+tables in different regions can have
+different table classes so depending on
+if you have
+one region that's being read or written
+to a red basically read heavily while
+the other not so much you can decide
+whether
+the one that's not
+read as much can be switched to standard
+ia or not
+and then it is important to take all
+these uh points into consideration about
+the auto scaling about the
+uh gsis and about the global tables so
+that we don't arrive at incorrect
+answers from our calculations
+so
+we have come up with some tools to give
+you an easier starting point
+this tool is called the table class
+evaluator
+it is essentially written in python and
+it can be run from the command line so
+it is intended to run automatically
+every week or so
+you can basically have something like a
+scheduled lambda for example which will
+run this every week
+and what the tool does is it will look
+at every single table in a region and it
+will call apis to describe those tables
+any gsis on those tables and it also
+considers global table replicas so that
+it can uh use the correct pricing for
+global table zip applicable
+the tool performs calculations for both
+classes and it will recommend you to
+change the table class for a table which
+might do better with standard ia
+so the tool does have some limitations
+today and it is still in works
+so as of today it works for tables that
+use provision capacity only
+if you have some dj some tables in the
+region that are using on-demand capacity
+the tool uh might not work for you yet
+and if you have a lot of auto scaling
+activity as well the tool only
+calculates based on when you run it so
+if you happen to run the tool
+get a recommendation at a period of
+exceptionally low utilization and then
+auto scaling bumps
+and then you have a lot of utilization
+after you've actually used the tool or
+the results could be incorrect
+and uh like i said it's a starting point
+to make it easier we're still working on
+the tool
+and i'd say use the tool with context of
+looking at the cloud watch metrics
+history
+and also that as of now the tool does
+not consider lsi's so if you have any
+local secondary indexes
+uh please to please do consider them in
+your
+calculations
+so you can find this tool uh at the
+github repo that's right here below
+you can see it sits in the aws labs
+repository it's open source approved and
+released as an
+official amazon tool so go ahead and
+explore it
+so one more thing to mention here is
+that you can switch between the table
+classes twice every 30 days so that
+means if you actually uh use the
+standard ia and find that it your table
+might do better or your throughput
+consumption has increased you can go
+back to using the standard class
+so moving on from table classes uh look
+at these interesting cloud cloud watch
+metrics trends here
+so they basically indicate that the gsi
+is unused
+but wait how
+we do see activity in the right metrics
+on the left hand side yeah so how can we
+call it unused
+the point i'm trying to make here is
+that rights are being propagated from
+the base table and we're actually
+consuming right capacity on the gsi but
+there is no read activity to justify the
+existence of this gsm
+so you create a gsi because you want to
+look up your data by a different
+criteria
+so it is possible that your access
+patterns have changed or the gsi was
+created with something in mind but it's
+just sitting there not being read right
+now
+it's basically consuming your storage it
+comes you it is consuming your right
+cost to propagate rights from the base
+table but you're not actually reading
+from the gsi so it is important to
+monitor the gsis
+and delete them if they are not needed
+similarly you can have cloud watch
+alarms on such metrics to see if your
+consumption falls to zero or uh an
+exceptionally low value
+for a period of time say 30 days or so
+for your gsis and for tables
+so that gives you a better idea of if
+you have a lot of unused tables and gsas
+in your account
+and getting rid of them can probably
+save you on costs
+there are some sub optimal table usage
+patterns that we see frequently and they
+might be worth digging into for today's
+discussion so the first one
+is
+where customers only use strongly
+consistent reads
+so dynamodb considers read requests as
+eventually consistent by default
+that means if you don't pass any
+consistency parameters with your
+requests they are going to be treated as
+eventually consistent it basically means
+that you could see stale data depending
+on how long the replication time is
+between your right and the moment when
+you actually issue the read request
+so we charge eventually consistent feeds
+at
+half an rcu for up to 4 kb of data
+that means you can read 8 kb of data
+with one rco in an eventually consistent
+manner
+that being said many customers have a
+part of workload that requires strongly
+consistent reads or read after right
+consistency as some may call it so we do
+provide strongly consistent reads with
+dynamo but
+it varies in charge basically we charge
+you
+one rcu or read capacity unit to read up
+to 4 kb of data
+so essentially it's twice as expensive
+as an eventually consistent read
+so what we observe is that instead of
+using strongly consistent read only for
+the part of the workload where customers
+actually need it uh they end up changing
+the entire processing to use strongly
+consistent reads
+so this of course doubles up the
+dynamodb read costs unintentionally
+when you could have actually
+gone with maybe 10 strongly consistent
+leads where you actually need that read
+after right consistency right
+and then if you're seeing high read
+costs and that's a concern
+then it's important to
+talk to your developers and get your
+code reviewed to confirm if this is
+indeed the case at hand
+so similarly uh we have some customers
+performing all operations as
+transactions dynamodb allows you to
+group certain actions in an all or
+nothing fashion so for customers who
+come to dynamodb especially from the
+relational background
+they're used to wrapping every operation
+in
+a transaction for safety so while it is
+very common and one of the best
+practices with relational databases it
+need not be the case with dynamodb
+so use transactions only if absolutely
+needed
+since it has obvious cost implications
+so a transactional read of up to 4 kb
+consumes two rsus as opposed to the
+default 0.5 rcus for eventual
+consistency so the costs are doubled in
+case of rights which means a
+transactional rate of up to 1 kb
+equates to 2 wsus
+so this case is relatively easier to
+identify you can check your cloud watch
+metrics uh filter them down
+to the transaction apis and see if the
+overall capacity consumption trend
+matches exactly without transaction api
+training or just see if transaction apis
+are the only graphs available for your
+table
+this would confirm that everything is a
+transaction for your table and it is
+worth justifying if everything actually
+needs to be a transaction
+or given the extra costs
+that come with transactions
+uh the next pattern that we'll talk
+about is the extensive use of scans
+a lot of customers want to be able to
+run analytical queries on their dynamodb
+data
+but because dynamodb is not an
+analytical database
+people say that's no problem we'll just
+run a scan we'll get the entire data
+dump and then we'll create analytical
+outputs on top of it however it is uh it
+is worth taking into account that scans
+can be quite expensive
+since we charge you for the amount of
+data read
+the filter conditions if any are applied
+on the data only after the data is read
+so a better alternative to repetitive
+scans is the exports to s3 feature
+it allows you to choose a point in time
+to export data to s3
+and it's available in a couple of
+formats so it becomes easier for you to
+run analytical queries on the s3 data
+and at the same time it does not consume
+any capacity from your table
+so the feature does require you to
+enable point in time recovery and it
+incurs costs but if you look at cloud
+watch and see that scans are very
+frequent you need to re-evaluate why
+there are so many scans
+and probably have a deeper discussion on
+the way that you are actually accessing
+data
+and if exporting to s3 for
+a periodic analysis is a better option
+cost wise and performance wise
+next on or not using ttl is another
+pattern that we've seen often so using
+ttl requires you to have a field in each
+of your dynamodb item formatted in a
+certain way
+so for already existing workloads ttl
+can identify items which are older than
+the expiry time that you have set for
+that item and then once the time is up
+or the item is cleaned from the table so
+ttl trims your data down and helps you
+save on storage costs and another useful
+aspect or the most useful aspect of
+detail is that the expired items
+uh
+the item expiry itself does not
+cost you anything removing the items via
+ttl is free
+and the items uh when deleted also occur
+as stream events so if you have a
+dynamodb stream enabled on your table
+you can consume from the stream and
+maybe archive the data or store it in s3
+for
+certain analytical purposes
+so instead of using lead item calls to
+clean your older data
+use ttl
+and
+it basically will save you on storage
+costs and the delete item call costs
+one more thing under consideration is
+your backup settings or backup
+strategies so dynamodb backups can now
+happen in two ways when we say backups
+it's it's the on-demand backups that
+we're talking about and not the
+point-in-time restore
+so the built-in dynamodb backup allows
+you on-demand backups and the second way
+of
+actually going about your backups is
+using the aws backup service
+so using the service is better because
+it comes with a lot of extra features
+the most important feature from the
+cost optimization front is the tiered
+storage
+it basically allows you to move your
+backups to a colder storage as per
+configuration
+and the colder storage tier is
+uh as
+uh significantly less expensive than the
+hot storage
+so you can configure these settings and
+also choose retention periods for your
+backups
+so the backups in aws backups also
+inherit the tags from their tables so if
+you have tagged your tables as we talked
+about earlier you can do some cost
+optimization or cost allocation analysis
+for your backups as well and uh an
+opt-in is required to use these features
+with aws backups to manage dynamodb
+backups and it should be available in
+both the backups and dynamodb console
+another good reason to use aws backup
+has to do with global tables so global
+tables is this awesome feature that
+allows you to maintain multiple active
+replicas in different regions what i
+mean by active replicas is that all of
+them can accept rights at the same time
+and replicate data across each other so
+it is easy to set up replicas and the
+sync across them is managed for you
+the replicas eventually converge to a
+consistent state using a last writer win
+strategy
+so in essence global tables is a great
+feature for workloads that actually need
+it
+but we've seen that customers use global
+tables as a part of their disaster
+recovery strategy
+so if you have a relatively
+uh relatively lenient uh
+time uh rto or rpo objectives basically
+recovery point objective and recovery
+time objectives then global tables might
+not be
+uh the best way to look at it because it
+comes with the
+cost for replicated wsu's right so an
+easier way to take care of your dr or
+relatively lenient dr something like a
+few hours or 12 hours or a day can be
+easily managed with the cross region
+backup copy feature provided by aws
+backups
+so that way it's going to be costing you
+lesser and you're not you're not
+essentially using global tables for
+disaster recovery in that case
+so this is another feature that we
+launched around reinvent 2021 it allows
+you to filter dynamodb stream events for
+aws lambda so if you're familiar with
+streams they contain an event
+corresponding to each data modification
+on the table so when you insert an item
+on the table or updated or deleted for
+that matter the record of each of these
+changes is going to be present in the
+stream
+so aws lambda is one of the most common
+consumers of the stream that can be
+configured and customers use this
+pattern very commonly for something like
+near real time processing
+so basically if you have a lambda which
+is subscribed to a stream
+it gets triggered on every single event
+by default and this was the behavior
+until recently
+basically you had to take the event
+filtering or evaluation logic into
+account on the lambda code end for
+example if you want to skip the delete
+events your lambda logic needed to
+identify the deletes and then just
+return without doing anything so this
+led to something like wasted utilization
+for that trigger because your lambda is
+running but it's doing nothing it's just
+evaluating the kind of event
+so what this new feature
+does is
+it allows you to add event filters so
+the filters decide what triggers a
+lambda function so you can decide the
+events of interest for actually
+triggering your lambda the filter could
+be type of event which is uh identify
+the event name in the dynamodb stream
+and with filters you could say i only
+ever want to see new inserts or don't
+show me any modifications
+or you know things like partition keys
+if there are certain items that interest
+you
+then you can choose to filter the events
+or depending on the partition key value
+as well
+so
+almost anything that you can think of
+that will be exposed in the stream
+uh is what you can base your filter on
+or compose your filter on so let me show
+you an example of how you do this
+on the left you can see that
+we have an example of an abbreviated
+event in a dynamodb stream
+and in this event i have a partition key
+of a string type identified by the s
+that you see there
+and then i want to process any event
+that comes through for a particular
+actor but i don't necessarily need it
+for a particular movie i am interested
+in all movies by that actor so the
+filter pattern that i configure on the
+right as you can see is that i provide a
+prefix with some actor so whenever my
+key has that some actor as a prefix
+the function is going to trigger
+but
+other functions or other changes are not
+going to trigger my lambda function so
+you would define these filters using
+json syntax as you can see below
+and the lambda is going to do its job
+without you having to take care of the
+evaluation logic or to identify the
+events of interest inside the lambda
+code itself
+uh an interesting thing to note about
+this cost optimization recommendation is
+that it doesn't actually save you any
+costs from dynamodb end
+so
+this this basically means that the get
+record calls are already free right
+so if lambda is your consumer uh you
+don't you don't get charged for the get
+record calls
+so if it's not going to save your
+dynamodb cost
+why is this even a recommendation
+so the reason is that it saves you a lot
+of money potentially from the diner the
+lambda invocation costs and we see many
+customers using dynamodb streams to
+lambda as a pattern to address a large
+number of use cases so
+that's how the
+wasted
+utilization that we talked about earlier
+can be eliminated and the lambda
+computation costs can be saved
+so we also have a limitation here so you
+can have up to five filters on a single
+dynamodb stream and it's a soft limit
+you can have it
+increased to 10 which is a hard limit so
+uh that's that's what you can get done
+and the filtering occurs in an or
+fashion which means if
+any of your events matches any of those
+filters that you have configured it is
+going to be passed through
+so we are now opening the floor for
+questions uh keep them coming
+[Music]
+you

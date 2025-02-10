@@ -8,3 +8,9 @@ langchain_tutorials/share/
 youtuber/bin/
 youtuber/include/
 youtuber/lib/
+
+
+w2-reader/
+
+ocr-ai-reader/
+openai-helloworld/

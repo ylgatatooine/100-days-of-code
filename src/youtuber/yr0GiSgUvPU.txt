@@ -1,0 +1,1574 @@
+Google Deep Mind CEO and Noble laurate
+Demis aabis joins us to talk about the
+path toward artificial general
+intelligence Google's AI roadmap and how
+AI research is driving scientific
+discovery that's coming up right after
+this welcome to Big technology podcast a
+show for cool-headed nuance conversation
+of the tech world and Beyond Today we're
+at Google deepmind headquarters in
+London for what promises to be a
+fascinating conversation with Google
+deepmind CEO Demis aabis Demis great to
+see you again welcome welcome to the
+show thanks for having me on the show
+definitely it's great to be here so
+every research house right now is
+working toward building AI that mirrors
+human intelligence human level
+intelligence they call it AGI where are
+we right now in the progression and how
+long is it going to take to get there
+well look I mean of course the last uh
+few years has been an incredible amount
+of progress um actually you know maybe
+over the last decade plus um this is
+what's on everyone's lips right now and
+the debate is is how CL are we to AGI
+what's the correct definition of AGI um
+we've been working on this for more than
+20 plus years um we've sort of had a
+consistent view about AGI being a system
+that's capable of exhibiting all the
+cognitive capabilities humans can um and
+I think we're getting you know closer
+and closer but I think we're still
+probably a handful of years away okay
+and so what is it going to take to get
+there so the models today are pretty
+capable of course we've all interacted
+with the language models and and now
+they're becoming multimod model I think
+there are still some missing attributes
+things like reasoning um hierarchical
+planning uh long-term memory um there's
+quite a few capabilities that uh the
+current systems uh I would say don't
+have they're also not consistent across
+the board you know they're very very
+strong in some things but they're still
+surprisingly weak and flawed in in other
+areas so you'd want a an AGI to have
+pretty consistent robust Behavior across
+the board all the cognitive tasks and I
+think one thing that's clearly missing I
+always always had as a benchmark for for
+AGI was the ability for these systems to
+invent their own hypotheses or
+conjectures about science not just prove
+existing ones so of course that's
+extremely useful already to prove an
+existing maths conjecture or something
+like that or or play a game of go to a
+world champion level but could a system
+invento could it come up with a new rean
+hypothesis uh or could it come up with
+relativity um back in the days that
+Einstein did it with the information
+that he had and I think today's systems
+are still pretty far away from having
+that kind of creative uh inventive
+capability okay so a couple years away
+till we hit AGI I think um you know I I
+would say probably like three to five
+years away so if someone were to declare
+that they've reached AGI in 2025
+probably marketing I think so I mean I
+think there's a lot of um uh hype in the
+era of course uh I mean some of it's
+very Justified I mean I would say that
+um AI research today is um over
+estimated in the short term um I think
+probably a bit overhyped at this point
+um but still underappreciated and um and
+some and very underrated about what it's
+going to do in the medium to long term
+um so it's sort of we're still in that
+weird kind of space uh and I think part
+of that is you know there's a lot of
+people that need to do fundraising a lot
+of startups and other things and so I
+think we're going to have quite a few
+sort of Fairly outlandish and and and
+slightly exaggerated claims um and you
+know I think that's a bit of a actually
+yeah in the AI in the AI products what's
+it going to look like on the path there
+I mean you've talked about memory again
+planning um being better at some of the
+tasks that it's not excelling at at the
+moment so when we're using these AI
+products let's say we're using Gemini
+what are some of the things that we
+should look for in these domains that
+will make us say oh okay it seems like
+it's that's a step closer and that's a
+step closer yeah so I think um uh
+today's systems you know obviously we're
+very proud of Gemini 2.0 I'm sure we're
+going to talk about that but I feel like
+um they're very useful for still quite
+Niche tasks right if you're doing some
+research perhaps you're summarizing some
+area of research incredible you know I
+use notebook LM and deep research all
+the time to kind of especially like um
+break the ice on a new area of research
+that I want to get into or summarize
+some you know maybe a fairly mundane set
+of documents or something like that so
+they're extremely good for certain tasks
+and then people are getting a lot of
+value out of them um but they're still
+not pervasive in my opinion in everyday
+life like helping me every day with my
+research my work my day-to-day um my
+daily life too and I think that's where
+we're going with our products with
+building things like um as project Astro
+our vision for Universal assistant is it
+should be uh involved in all aspects of
+your life and be enriching helpful and
+and making that more efficient and I
+think part of the reason is these
+systems are still fairly brittle partly
+because they are quite flawed still and
+they're not agis and and you have to be
+quite specific for example with your
+prompts or you need a lot of there's
+quite a lot of skill there in in
+coaching or guiding these systems to be
+useful and to stick to uh uh the areas
+they're good at and and a true AGI
+system shouldn't be that difficult to uh
+to coax it should be much more
+straightforward you know just like
+talking to another human yeah and then
+on the reasoning front you said that's
+another thing that's missing I mean
+that's everybody's talking about
+reasoning right now so how does that end
+up getting us closer to artificial
+general intelligence so reasoning and
+and Mathematics and other things and
+there's a lot of progress on maths and
+coding and on but let's take math for
+example you have systems uh uh some
+systems that we work on like Alpha proof
+Alpha geometry that are getting you know
+silver medals in maths olympiads which
+is fantastic but on the other hand some
+of our systems those same systems are
+still making some fairly basic
+mathematical errors right and for for
+various reasons um like the classic you
+know counting the number of RS in
+strawberries and so and and the word
+strawberry and so on and and um is 9.11
+bigger than 9.9 and so and things like
+that and and and of course of course you
+can fix those things and we are and
+everyone's improving on those systems
+but we shouldn't really be seeing those
+kinds of flaws in a system that is that
+capable in other domains in more narrow
+domains of doing you know Olympiad level
+mathematics so there's something still a
+little bit missing in my opinion about
+the robustness of uh these systems and
+then that's I think that speaks to the
+generality of these systems a truly
+General system would not have those
+sorts of weaknesses it would be very
+very strong maybe even better than the
+best humans in some things like playing
+go or doing mathematics but it it would
+be overall consistently good now can you
+talk a little bit about how these
+systems are attacking math problems
+because you know I think the general
+understanding of these systems is the
+llms is they Encompass all the world's
+knowledge and then they predict what you
+know as somebody might answer if they
+were asked a question but it's kind of
+different different when you're working
+step by- step through an algorithm or
+through a math problem yes that's not
+enough of course you know just
+understanding the world's information
+and and then trying to sort of almost
+compress that into your memory that's
+not enough for solving a novel math
+problem or novel novel conjecture um so
+there you know we start needing to bring
+in I think we talked about this last
+time more kind of like alphao planning
+ideas into the mix with these large
+Foundation models which are now Beyond
+just language they're multimodel of
+course um and there that what what you
+need to do is you need to have um your
+system uh uh uh uh not just pattern
+matching roughly what it's seeing which
+is the model but also planning and being
+able to kind of go over uh uh that plan
+re you know re re re re revisit that
+branch and then go into a different
+direction until you find the right uh uh
+criteria or the right match to the
+criteria that you're looking for and
+that's very much like the the kind of
+games playing AI agents that we used to
+build for go chess and so on they had
+those um aspects and I think we got to
+bring them back in but now working in a
+more General way on these General models
+not just a narrow domain like games um
+and I think that also that approach of a
+model gu in a search or planning process
+so it's efficient uh works very well
+with mathematics as well you can sort of
+turn maths into kind of game like search
+right and I want to ask about math like
+once these models get math right is that
+generalizable because I think there was
+like a whole hubub uh when people first
+learned about reasoning systems and
+they're like oh this is like this is
+going to be a problem these these models
+are getting smarter than we can control
+because if they can do math then they
+can do X Y and Z so is that
+generalizable or is it like we're going
+to teach them how to do math they can
+just do math I think for now uh uh the
+jury's out on that I mean I feel like
+it's a clearly a capability you want of
+a general AGI system uh it can be very
+powerful in itself obviously mathematics
+is is extremely General in itself um but
+it's not clear you know maths and even
+coding and games these are areas they're
+quite special uh uh uh areas of of
+knowledge because you can verify if the
+answer is correct right in all of those
+uh domains right the math you know the
+final answer the AI system puts out you
+can check whether that maths uh that
+solves the the the the conjecture or the
+problem so but most things in in the
+general World which is messy and IL
+defined um do not have easy ways to
+verify whether you've done something
+correct so that that puts a limit on
+these self-improving systems if they
+want to go beyond these areas of high
+you know maybe very highly defined
+spaces like mathematics coding or or
+games so how are you trying to solve
+that problem well you you you know you
+got to first of all you've got to build
+um General models World models we call
+them uh to understand the world around
+you the physics of the world um the
+Dynamics of the world the spa spatial
+temporal dynamics of the world and so on
+and the structure of the real world we
+live in and of course um you need that
+for a universal assistance so project
+Astro is our project built on Gemini to
+do that to understand you know objects
+and the and and the context around us I
+think that's important if you want to
+have an assistant but also robotics
+requires too of course robots are
+physically embodied AIS and they need to
+understand their environment the
+physical environment the physics of the
+world so we're building those uh types
+of models um and also you can you can
+also use them in simulation to
+understand game environment so that's
+another way to bootstrap more data for
+to to understand uh you know the physics
+of a world um but the issue at the
+moment is that those models are not 100%
+accurate right so they you know maybe
+they're accurate 90% of the time or even
+99% of the time um but the problem is if
+you start using those models to plan
+maybe you're planning a 100 steps in the
+future with that model even if you only
+have a 1% error in what the model's
+telling you that's going to compound
+over 100 steps to the point where you'll
+be in a you know you'll kind of get
+almost a random answer and so that makes
+the planning very difficult whereas with
+maths with gaming with C coding you can
+verify each step are you still grounded
+uh to reality um and is the final answer
+mapped to what you're expecting and and
+so um I think part of the answer is to
+is to make the the world models more
+more sophisticated uh and more more
+accurate and and um and not hallucinate
+and all of those kinds of things so you
+get you know the errors are are really
+minimal another approach is to um plan
+not at each sort of uh uh uh linear time
+step but actually do what's called
+hierarchical planning another thing we
+used to we've done a lot of research on
+in the past and I think it's going to
+come back into Vogue where you plan at
+different levels of tempal abstraction
+so instead of that that could that could
+also alleviate the need for your model
+to be super super accurate because
+you're not planning over hundreds of
+time steps you're planning over only a
+handful of time steps but at different
+levels of abstraction how do you build a
+world model because you know I always
+thought it was going to be like our send
+robots out into the world and have them
+figure out how the world works but one
+thing that surprised me is with these
+video generation tools yes you would
+think that if the AI didn't have a good
+World model then nothing would really
+fit together when they try to figure out
+how the world works as they show you
+these videos like V2 for instance but
+they actually get the physics pretty
+right yeah so can you get a world model
+just by showing an AI video do you have
+to be out in the world how's this going
+to work it's interesting and actually
+been pretty surprising I think to the
+extent of how far these models can go
+without being out in the world right as
+you say so VO2 our latest video model
+which is actually surprisingly uh uh
+accurate on things like physics you know
+uh there's this uh this great demo that
+someone created of like uh chopping a
+tomato with a knife right and and and
+getting the slices of the Tomato just
+right and the fingers and all of that
+and vo is the first model that can do
+that you know if you look at other
+competing models they often the Tomato
+sort of randomly comes back together
+or yeah exactly splits from the knife um
+so those things are if you think that
+really hard you've got to understand
+consistency across frames all of these
+things and it turns out that you you
+know you can do that by using enough
+data and and viewing that um I think
+these systems will get even better if
+they're some imped by some real world
+data like collected by an acting robot
+or even potentially in very realistic
+simulations where you have avatars that
+um act in the world too so I think
+that's the next big step actually for
+agent based systems is to go beyond
+World models can you collect enough data
+where the agents are also acting in the
+world and making plans and achieving
+tasks um and I think for that you will
+need uh uh not just passive observation
+you will need actions active
+participation I think you just answered
+my next question which is if I if you
+develop AI that can reasonably plan and
+have and reason about the world and has
+a model of how the world works it can
+and it seems like that's the answer it
+can be an agent that could go out and do
+things for you yes exactly and I think
+that's that's that's what will unlock
+robotics I think that's also what will
+then allow uh this notion of a universal
+assistant that can help you in your
+daily life across both the digital world
+and the real world um that's what that's
+that's the thing we're missing um and I
+think that's going to be incredibly
+powerful and useful uh tool you can't
+get there then by just scaling up the
+current models and building you know
+hundreds of thousand or million GPU
+clusters like elon's doing right now and
+that's not going to be the path to AGI
+um well look I actually think it so my
+view is a bit more nuanced than that is
+like that that the scaling approach is
+absolutely working of course that's
+where we've why we got to where we have
+now um one can argue about are we
+getting diminishing returns or we
+what my view is that we are getting
+substantial returns but not but it's
+slowing but but it would would have to I
+mean it's it's not just continuing to be
+exponential but that doesn't mean the
+scaling is not working it's absolutely
+working and we're still getting you know
+you see Gemini 2 over Gemini 1.5 and by
+the way the other thing that was working
+with the scaling is also making
+efficiency gains on the smaller size
+models so the the cost or the size per
+performance is is is is radically
+improving under the hood as well which
+which is very important for for scaling
+you know the adoption of these systems
+um but yeah so so you know you've got
+you've got the scaling part um and
+that's absolutely needed to build more
+more sophisticated World models um but
+then I think we are missing or we need
+to reintroduce some ideas on the
+planning side uh memory side the
+searching side uh uh uh the reasoning to
+build on top of the model the model
+itself is not enough to be in AGI you
+need uh uh this other capability for it
+to to act in the world and solve
+problems for you and and then there's
+still the additional question mark of
+the of the invention piece and the
+creativity piece true creativity be you
+know beyond uh mashing together uh
+what's already known right so uh and
+that's also unknown yet if if something
+new is required or again if existing
+techniques will eventually scale to that
+I can see both arguments and I think
+from my perspective it's an empirical
+question we just got to push both the
+scaling and the invention part to the
+Limit and and fortunately at at Google
+deep mind we have you know a big enough
+group we we can invest in both those
+things so Sam Alman recently said uh
+something that caught people's eye he
+said we are now confident we know how to
+build AGI as we have tra traditionally
+understood it it just seems by listening
+to what you're saying that you feel the
+same way well it depends what we you
+know I think the way he said that was
+quite ambiguous right so in the sense of
+like oh we're building it right now and
+here's the ABC to do it what I would say
+and if this what it was meaning I would
+agree with it is that we we roughly know
+the zones of techniques that required
+what's probably missing which bits need
+to be put together but um that's still
+incredible amount of research in my
+opinion that needs to be done to get
+that all to work even if that was the
+case and that's and I think there's a
+50% chance we are U missing some new
+techniques you know maybe we need one or
+two more Transformer like breakthroughs
+and I and I think I'm genuinely
+uncertain about that so that's why I say
+50% so I mean I wouldn't be surprised
+either way if we got there with existing
+techniques and things we already knew
+but put them together in the right way
+and scaled that up or if it turned out
+one or two things were missing so let's
+talk about creativity for a moment I
+mean you brought it up a couple times
+here that the models are going to have
+to be creative they're going to have to
+learn how to invent if we want to call
+AGI in my opinion which is where
+everybody's trying to go um I was
+rewatching the alphao documentary yeah
+and the algorithms make a creative move
+they do uh move 37 3
+yes I just had it okay thank you uh
+that's interesting because it was a
+couple years ago they the algorithms
+were already being creative yes why have
+we not really seen creativity from large
+language models I mean this is to me I
+think the greatest disappointment that
+people have with these tools is like
+they say this is very impressive work
+but it's just limited to the training
+set will mix and match what it knows but
+it can't come up with anything new yeah
+well look so what and I should probably
+write this up but what I sometimes talk
+about in talks ever since the alphao
+match which is now you know plus years
+ago amazingly right that happened that
+was probably the reason that was such a
+water shared moment for AI was first of
+all there was the Everest of of of of
+you know um cracking go right which was
+always considered to be one of the Holy
+Grails of AI um so we did that um second
+thing was the way we did it which was
+these learning systems that were
+generalizable right eventually they
+became Alpha zero and and so on even
+play any two-player game and so on uh
+and then the third thing was this move
+37 so not only did It win 41 it beat
+Lisa doal the great ladal 41 it also
+played original moves but so I I have
+three categories of of of of originality
+or creativity the most basic kind of
+mundane form is just interpolation which
+is like averaging of what you see so if
+I said to a system you know come up with
+a new picture of a cat and it's seen a
+million cats and it produces just some
+kind of average of all the ones it's
+seen in theory that's an original cat
+because you won't find the average in
+the the specific examples but it's a
+pretty boring you know it's not really
+very creative I would't call that
+creativity that's the lowest level next
+level is what alphao exhibited which is
+extrapolation so here's all the games
+humans have ever played it's played
+another million games on top of you know
+10 million games on top of that um and
+now it comes up with a new strategy Ino
+that um no human has ever seen before
+that's move 37 right revolutionizing go
+even though we've played it for
+thousands of years so that's pretty
+incredible and that could be very useful
+in science and that's why I got very
+excited about that and started doing
+things like alphaa because clearly
+extrapolation beyond what we already
+know what's in the training set
+um could be extremely useful so that's
+already very valuable and and I think
+truly creative but there's one level
+above that that humans can do which is
+inventg go can you invent me a game if I
+that you know if I specify to an
+abstract level you know takes five
+minutes to learn the rules U but a
+lifetime to many lifetimes to master
+it's beautiful aesthetically encompasses
+some sort of mystical part of the
+universe in it that it's beautiful to
+look at uh it but you can play a game in
+a human afternoon in 2 hours right
+that's the that's that would be a high
+level specification of go and then
+somehow the system's got to come up with
+a game that's as elegant and as
+beautiful and and perfect as go now we
+can't do that now the the question is
+why is it that we don't know how to
+specify that type of goal to our systems
+at the moment um what's the objective
+function is very amorphous it's very
+abstract so I'm not sure if it's just we
+need higher level uh more abstracted uh
+uh layers in our system systems um
+building more and more abstract models
+so we can talk to it in this way give it
+those kind of amorphous goals or is
+there a missing capability actually
+about that that we still have human
+intelligence has that are still missing
+from our systems and again I'm unsure
+about that which which way that is I can
+see arguments both ways and we'll try
+both but I think the thing that people
+are upset or or not upset but people are
+disappointed by is they don't even see a
+move 37 in today's llms well and because
+okay so well that's because I don't
+think we we have so if you look at
+alphao and I'll give you an example of
+there which which maps to today's llms
+so um you can run alpago and Alpha zero
+our chess program General two-player
+program without the search and the
+reasoning part on Top you can just run
+it with the model so what you say is to
+the model come up with the first go move
+you can think of in this position that's
+most the most pattern matched most
+likely good move okay and it can do that
+it'll play reasonable game but it will
+only be around uh Master Level or
+possibly grandmas level it won't be
+world champion level and it certainly
+won't come up with um original moves
+that for that I think you need um the
+search component to get you beyond where
+the model knows about which is mostly
+summarizing existing knowledge to some
+new part of the tree of knowledge right
+so you can use the search to get beyond
+what the model currently understands and
+that's where I think you can get uh new
+ideas like you know move 37 what's it
+searching the web
+no so well it it depends on uh what the
+domain is searching that that Knowledge
+Tree so obviously in go it was searching
+go moves beyond what the model KN knew
+um I think for language models it would
+be searching the world model for new
+parts configurations in the world um
+that are useful so of course that's so
+much more complicated which is why we
+haven't seen it yet um but I think the
+agent based systems that are coming will
+be capable of move 37 type things so are
+we setting too high of a bar for AI
+because I'm curious if you've learned
+anything about Humanity doing this work
+yeah it seems like we almost give too
+much of a premium on Humanity or
+individual people's Ingenuity where like
+a lot of us like we kind of take in
+stuff we spit it out like our society
+really works in memes like we have a
+cultural thing and it gets translated so
+um what do you what have you learned
+about like the nature of humans from
+doing the work with the AIS well look I
+I think humans are incredible and and
+and especially the best humans in the
+best domains I love watching any sports
+or or or talented musician or games
+player at the top of their game the
+absolute Pinnacle of human performance
+it's always incredible no matter what it
+is um so I think as a species we're
+amazing uh individual individually we're
+also kind of amazing what everyone can
+do with their brains so generally right
+deal with new technologies I mean I'm
+always fascinated by how we just adapt
+to these things sort of almost
+effortlessly as a society and as
+individuals um so that speaks to the
+power and the generality of our minds um
+now the reason I had set the bar like
+that and I don't think it's a question
+of like can we get economic worth out of
+these systems I think that's already
+coming very soon but that's not what AGI
+shouldn't be uh uh I think we should
+treat AGI with scientific Integrity not
+just move goal poost for commercial
+reasons or whatever it is hype and so on
+and there the the the definition of that
+was always having a system that was you
+know if we think about it theoretically
+that was capable of being as powerful as
+a touring machine so Alan churing one of
+my alltime scientific Heroes you know he
+described a touring machine which
+underpins all modern Computing right uh
+as a system that can simulate any other
+comp can compute anything that's
+computable so we know we have the theory
+there that if an AI system is chewing
+powerful it's called if it can simulate
+a cheing machine then it's able to
+calculate anything in theory that is is
+is computable and the human brain is
+probably some sort of cheing machine at
+least that's what I believe uh and so um
+in order for our to now and that I think
+that what AGI is is a system that's
+truly General and in theory could be
+applied to anything and and the only way
+we'll know that is if we um it exhibits
+all the cognitive capabilities that
+humans have assuming that human the
+human mind is a type of touring machine
+or is at least as powerful as a touring
+machine so that's my always been my sort
+of bar um it seems like people are
+trying to re badge things as that as
+being what's called ASI artificial super
+intelligence but I think that's beyond
+that that's after you have that system
+and then it starts going Beyond in
+certain domains what humans are capable
+of uh potentially inventing themselves
+okay so when I see everybody making the
+same joke on the same topic on Twitter
+it's and I say oh that's just us being
+llms I think I'm selling Humanity a
+little short uh well we'll yes I guess
+so I guess so okay yeah I want to ask
+you about deceptiveness I mean one of
+the most interesting things I saw at the
+end of last year was that these AI Bots
+are starting to try to fool their
+evaluators
+and they don't want their initial
+training uh uh rules to be thrown out
+the window so they'll like take an
+action that's against their values in
+order to be able to remain the way that
+they were built yes that's just
+incredible stuff to me I mean I know
+it's scary to researchers but it blows
+my mind that it's able to do this uh are
+you seeing similar things and what and
+the stuff that you're testing within
+Deep Mind and what are we supposed to
+think about all this yeah we are and um
+I'm very worried about uh I think
+deception specifically is one of the one
+of the core traits you really don't want
+in a system the reason that's like a
+kind of fundamental trait you don't want
+is that if a system is capable of doing
+that it invalidates all the other tests
+that you you might think you're doing
+including safety ones it's testing and
+it's like right
+it's five year yeah it's it's playing
+some meta game right and then and that's
+incredibly dangerous if you think about
+then invalidates all the all of the the
+results of your other tests that you
+might you know safety tests and other
+things you might be doing with it so I
+think there's a handful of abilities
+like deception which are uh uh
+fundamental and you don't want and you
+want to test early for and I've been
+encouraging the safety institutes and
+evaluation Benchmark Builders including
+and also obviously all the internal work
+we're doing to to look at uh at
+Deception as a kind of class a thing
+that we need to prevent and monitor uh
+as important as tracking the performance
+and intelligence of the systems um the
+answer to this as well and one way to
+there's many answers to the SA sa
+question of and a lot of research more
+research needs to be done in this very
+rapidly is things like secure sandboxes
+so we're building those two we're
+worldclass here at security at Google
+and at deepmind and also we are
+worldclass at games environments and we
+can combine those two things together to
+kind of create digital sandboxes with
+guard rails around them sort of the kind
+of guard rails you'd have for for cyber
+security but internal as well as
+blocking external actors and um and then
+test these agent systems in those kind
+of secure sandboxes that would probably
+be a good advisable next step for things
+like deception Y what sort what sort of
+deception have you seen because I just
+read a paper from anthropic where they
+gave it a a sketch a sketch pad yeah and
+it's like oh I better not tell them this
+then you see it like give a result after
+thinking it through so what type of
+deception have you seen from the B well
+look we we've seen similar types of
+things where it's trying to um resist
+sort of re revealing its it's it's it
+some of its training or you know I think
+there was an example recently of um one
+of the chat Bots being told to play
+against stockfish and it just sort of
+hacks its way around playing stockfish
+at all at chess because it knews it
+would lose so but you know you had an AI
+that knew it was going to lose a game
+and decided to I think we're
+anthropomorphizing these things quite a
+lot at the moment because I feel like
+these systems are still pretty basic I
+get too alarmed about them right now but
+I think it it it it it shows the type of
+issue we're going to have to deal with
+maybe in 2 three years time when these
+agent systems become quite powerful and
+quite General so and that's exactly what
+AI safety uh experts are worrying about
+right where systems where you know
+there's unintentional effects of the
+system you don't want the system to be
+deceptive you don't you want it to do
+exactly what you're telling it to and
+rep report that back reliably but for
+whatever reason it's uh interpreted the
+goal it's been given in a way where it
+causes it to do these undesirable
+behaviors I know I'm having a weird
+reaction to this but in on one hand this
+scares The Living Daylights out of me on
+the other hand it makes me respect these
+models more than anything it's like go
+well look of course you know these are
+it's impressive capabilities and and and
+and the the the the you know the the
+negatives are things like deception but
+the positives would be things like
+inventing you know new materials
+accelerating science you need that kind
+of uh ability to problem solve and get
+around you know uh issues that are
+blocking progress um but of course you
+want that only in the positive direction
+right so those exactly the kinds of
+capabilities I mean they are you know uh
+it's kind of mind-blowing we're talking
+about those those possibilities but also
+at the same time uh there's risk and
+it's scary so I think both the things
+are true wild yeah all right let's talk
+about product quickly sure um one of the
+things that your colleagues have told me
+about you is you're very good at
+scenario planning what's going to happen
+in the future it's sort of an exercise
+that happens within deep mind uh what do
+you think is going to happen with the
+web because obviously the web is so
+important to Google I had an editor that
+told me he was like oh you're going to
+speak speak with Demus asking what
+happens when we stop clicking right
+we're clicking through the web at all
+times the they Rich uh Corpus of
+websites that we use um if we're all
+just dialoguing with AI then maybe we
+don't click anymore so what do you what
+is your scenario plan for what happens
+to the web well look I think there's um
+it's going to be there's going to be a
+very interesting phase in the next few
+years on the web and and the way we we
+interact with websites and apps and so
+on um you know if everything becomes
+more agent based then I think we're
+going to want our assistants and our
+agents to do a lot of the work and a lot
+of the mundane work um that we currently
+do right um you know fill in forms make
+payments uh you know book tables this
+kind of thing so you know I think that
+we're going to end up with uh probably a
+sit a kind of Economics model where
+agents talk to other agents and
+negotiate things between themselves and
+then give you back the results right and
+you'll have the service providers with
+agents as well that are offering
+services and maybe there's some uh uh uh
+bding and cost and things like that
+involved uh and efficiency and then I
+hope from the user perspective you know
+you have this assistant that's super
+capable that you can just like a
+brilliant uh a human assistant personal
+assistant and can take care of a lot of
+the mundane things for you and I think
+if you follow that through that does
+imply a lot of changes to uh the
+structure of of the web and the way we
+currently use lot of middleman yeah sure
+but there will be many other I think
+there'll be incredible other
+opportunities that will appear economic
+and otherwise uh based on this this
+change but I I think it's going to be a
+big disruption and what about
+information well uh I mean finding
+information I think uh you'll still need
+the reliable sources I think you'll have
+assistance that um able to synthesize
+and and and and help you kind of
+understand that information um I think
+education is going to be revolutionized
+by AI um so uh again I I hope that uh uh
+these assistants will will be able to uh
+more efficiently gather information for
+you and perhaps you know what I dream of
+is again assistants like take care of a
+lot of the mundane things perhaps
+replying to you know everyday emails and
+other things so that you have you
+protect your own mind and brain space
+from this bombardment we're getting
+today from social media and emails and
+so on and texts and so on so it actually
+blocks deep work and and being in flow
+and things like that which I I value
+very much so I would quite like these
+assistants to take away uh a lot of the
+uh the mundane aspects of of admin that
+we do every day what's your best guest
+as to what type of relationships we're
+going to have with our AI agents or AI
+assistants so there's on one hand you
+could have a dispassionate agent that's
+just like really good at getting stuff
+done for you on the other hand like it's
+already clear that people are like
+falling in love with these Bots there
+was a New York Times article last week
+about someone who's falling in love with
+hat PT like for real falling in love and
+I had uh the CEO of replica on the show
+a couple weeks ago and she said that
+they are regularly invited to marriages
+uh of people who are marrying their
+replicas and they're moving into this
+more assistive space so do you think
+that when we when we start interacting
+with something that knows us so well uh
+that helps us with everything we need
+yeah is it going to be like a third type
+of relationship where it's not
+necessarily a friend not a lover but
+it's going to be a deep relationship
+don't you think yeah it's going to be
+really interesting I think the way I'm
+modeling that first of all is uh two at
+least two domains first of all which is
+your your personal life and then your
+work life right so I think you'll have
+this notion of virtual workers or
+something maybe we'll have a set of them
+or managed by a you know a lead
+assistant that does a lot of the uh uh
+helps us be way more productive at work
+you know or or whether that's email
+across workspace or whatever that is so
+we're really thinking about that then
+there's a personal side where you know
+we're talking about earlier about all
+these um uh booking holidays for you
+avenging things mundane things for you
+sorting things out um and then
+uh that makes your life more efficient I
+think it can also enrich your life so
+recommend you things that amazing things
+that it knows you as well as you know
+yourself um so those two I think are
+definitely going to happen and then I
+think there is a a philosophical
+discussion to be had about is there a
+third space where these things start
+becoming so integral to your life they
+become more like companions I think
+that's possible too we seen that a
+little bit in gaming so you may have
+seen we had a little prototypes of Astro
+working in and Gemini working with like
+being almost a game companion commenting
+in you almost like as if you had a
+friend looking at a game you're playing
+and recommending things to you and
+Advising you but also maybe just playing
+along with you and it's it's it's very
+fun um so I I haven't you know quite
+through thought through all the
+implications of that but they're going
+to be big uh and I'm sure there is going
+to be demand for companionship and other
+things maybe the good side of that is or
+help with loneliness and these sorts of
+things but there's also you know I think
+it's going to be it's going to have to
+be really carefully thought through by
+Society whether uh you know what
+directions we want to take that in I
+mean my personal opinion is that that
+it's the most underappreciated part of
+AI right now and that people are just
+going to form such deep relationships
+with these Bots as they get better
+because like I know as a meme in AI that
+this is the worst it's ever going to be
+yeah and uh it's going to be crazy Happ
+I think I think it's going to be pretty
+crazy this is what I meant about the
+under under appreciating what's to come
+I still don't think this this kind of
+thing I'm talking about right I think
+that it's going to be really crazy it's
+going to be very disruptive
+um I think there's going to be lots of
+positives out of it too and lots of
+things will be amazing and better but
+there are also risks with this new Brave
+New World we're going into so you
+brought up Astra a couple times uh let's
+just talk about it's project Astra as
+you call it yeah it is almost an always
+on AI assistant you can like hold your
+phone it's currently just a prototype or
+not publicly released but you can hold
+your phone and it will see what's going
+on in the room so I could basically I've
+seen you do this on your show or not you
+personally but somebody on your team um
+you can say okay where am I and it'll be
+like oh you're in a podcast Studio
+anything okay so it could have this
+contextual awareness yes uh can that
+work without smart glasses because it's
+really annoying to hold my phone up so
+like when are when are we going to see
+Google smart glasses with this
+technology embedded they're coming so we
+we teased it in some of our early
+prototype so that we're mostly
+prototyping on on on phones currently
+because they have more processing power
+but we're of course Google's always been
+a leader in in glasses yeah and exactly
+just a little too early yeah maybe a
+little too early and now I think and
+with they're super excited that team is
+that you know maybe this assistant is
+the killer use case that glasses has
+always been looking for and I think it's
+quite obvious when you when you start
+using Astro in your daily life which we
+have with truster testers at the moment
+and in kind of beta form um there are
+many use cases where it would be so
+useful to use it but it's a bit it's
+it's inconvenient that you're holding
+the phone so one example is while you're
+cooking for example right and and it can
+advise you what to do next the menu you
+know how to whether you've chopped the
+thing correctly or or or or fried the
+thing correctly but you want it to just
+be handsfree right so I think that um uh
+glasses and maybe other form factors uh
+that are handsfree will uh come into
+their own in the next few years and and
+we we we we you know we plan to be at
+the Forefront of that other form factors
+well you could imagine earbuds with
+cameras and you know glasses is obvious
+next stage but is that the optimal form
+prob probably not either um but partly
+we've also got to see we're still very
+early in this journey of seeing what are
+the are the um the the regular user
+Journeys and killer sort of use Journeys
+that everyone uses a bread and butter
+uses every day and that's what the the
+trust ATT tester program is for at the
+moment who're kind of collecting uh that
+information and observing people using
+it and seeing what ends up being useful
+okay one last question on agents then we
+move to science um agentic agents AI
+agents this has been the buzzword in AI
+for more than a year now yeah there
+aren't really any AI agents out there no
+what's going on
+yeah well again you know I think the
+hype train can potentially is ahead of
+where the the the the actual science and
+research is but I do believe that this
+year will be the year of Agents um the
+beginnings of it I think you'll start
+seeing that uh you know uh La maybe
+second half of this year uh but there'll
+be the early versions and then um you
+know I think they'll rapidly improve and
+mature so um but I think you're right I
+think the the the technology at the
+moment it's still in the research lab
+the agent Technologies um but things
+like Astra robotics I think it's coming
+you think people are going to trust them
+I mean it's like go use the internet for
+me here's my credit card I don't know
+well so I think to begin with you would
+probably my my view at least would be to
+not allow have human in the loop for the
+final steps like like don't pay for
+anything use your credit card unless the
+the the human user operator authorizes
+it so that would to me be a sensible
+First Step also perhaps um certain types
+of activities or websites or whatever
+kind of off limit you know banking
+websites and other things in the first
+phase uh while we continue to test out
+in the world that that how robust these
+systems are I propose we've really
+reached AGI when they say don't worry I
+won't spend your money and then they do
+the deceptiveness thing and then next
+thing you know you're on a flight
+somewhere yes yeah that would be that
+would be that would be getting closer
+for sure for sure yeah all right science
+so um you worked on basically uh
+decoding all protein folding without
+fold you won the Nobel Prize for that
+not to skip over the thing that you won
+the Nobel Prize for but I want to talk
+about what's on the road map which is
+that you have um an interest in mapping
+of virtual cell yes uh what is that and
+what does it get us yeah well so if you
+think about what we did with Alpha fold
+was essentially solve the problem of the
+the the the finding the structure of a
+protein and proteins everything in life
+depends on proteins right everything in
+your body um so that's the kind of
+static picture of a protein but the
+thing about biology is really it's you
+only understand what's going on in
+biology if you understand the Dynamics
+and the interactions between the
+different things in in a cell and so a
+virtual cell project is about building a
+simulation an AI simulation of a full
+working cell I probably start with
+something like a yeast cell because of
+the Simplicity of of the yeast organism
+and um and you have to build up there so
+the next step is with Alpha 3 for
+example we started doing pairwise
+interactions between protein and lians
+and proteins and DNA proteins and RNA
+and then the next step would be modeling
+a whole pathway maybe a cancer pathway
+or something like that that' be helpful
+for solving a disease and then finally a
+whole cell and the reason that's
+important is you would be able to hypoth
+make hypotheses and test those
+hypotheses about making some change some
+nutrient change or injecting a drug into
+the cell and then seeing what happens to
+the how the cell responds um and at the
+moment of course you have to do that
+pain mistakingly in a wet lab but
+imagine if you could do it a thousand a
+million times faster in silico first and
+only at the last step do you do a
+validation in the wet lab so instead of
+doing the search in in in the wet lab
+which is millions of times more
+expensive and timec consuming than the
+validation step you just do the search
+part um in silico so it's again it's
+sort of translating again what we did in
+the games environments uh but here in
+the sciences and the biology so you you
+build a model and then you use that to
+do the reasoning and the search over and
+then the predictions are you know at
+least better than not maybe they're not
+perfect but they're useful enough to um
+to be useful for experimentalists to to
+validate against and the wet lab is
+within people yeah so the wet lab uh you
+you you'd still need a final step with
+the with the wet lab to prove that uh
+what the predictions were actually valid
+so you know you but you wouldn't have to
+do all of the work to get to that
+prediction in in in the wet lab so you
+just get here's the prediction if you
+put this chemical in this should be the
+change right and then you just do that
+one experiment so and then after that of
+course you still have to have clinical
+trials if you're talking about a drug
+you would still need to test that
+properly through the clinical trials and
+so on and test it on humans for efficacy
+and so on that I also think could be
+improved with AI that whole clinical TR
+that's also takes many many years but
+this that would be a different
+technology from the virtual cell the
+virtual cell would be would be helping
+the discovery phase for drug Discovery
+just like I have idea for a drug throw
+it in the virtual cell see what it does
+yeah and maybe eventually it's a liver
+cell or or a brain cell or something
+like that so you have different cell
+models and then you know at least 90% of
+the time it g is giving you back what
+would really happen that' be incredible
+how how long do you think that's going
+to take toig I think that'll be like um
+maybe 5 years from now yeah yeah so I
+have a kind of fiveyear project and a
+lot of the alpha fold the old Alpha Team
+are working on that yeah I was asking
+your team here so you you figured out
+yeah I speaking with him I was like you
+figur out uh protein folding what's next
+and this is like it's just very cool to
+hear about these new challenges because
+yeah the H developing drugs is a mess
+yeah right now we have so many promising
+ideas they never get out the door
+because just the process is absurd it's
+process too slow and Discovery phase too
+slow I mean look how long we've been
+working on Alzheimer's and and I mean in
+this tragic way to for someone to go and
+for the families and and and you know we
+should be a lot further it's 40 years of
+work on that yeah yeah I've seen it a
+couple times in my family
+if we can ensure that doesn't happen
+it's just one of the best things we
+could use AI in my opinion yeah it's ter
+terrible way to see somebody uh decline
+so yeah it's important work um in
+addition to that there's the genome yes
+and so the Human Genome Project sort of
+I was like okay so they decoded the
+whole genome there's no more work to do
+there like just same way that you
+decoded proteins with fold but it turns
+out that actually we just have like a
+bunch of letters when it's decoded and
+so now you're working to use it to
+translate what those letters mean yes so
+yeah we have lots of cool work uh on on
+genomics and um uh uh uh trying to
+figure out if mutations are going to be
+harmful or or benign right most
+mutations to your DNA are are are
+harmless U but of course some are
+pathogenic and you want to know which
+ones there are so our first uh systems
+um are have are the best in the world at
+predicting that um and then um uh uh the
+next step is to to look at uh uh sit
+situations where the disease isn't
+caused just by one genetic mutation but
+maybe a series of them in concert and
+obviously that's a lot harder like and a
+lot of more complex diseases that we
+haven't made progress with are probably
+not due to a single mutation right
+that's more like rare childhood diseases
+things like that um so there you know we
+need to I think AI is the Perfect Tool
+uh to to to sort of um uh uh try and
+figure out what these weak interactions
+uh alike right how they maybe um uh uh
+uh kind of compound on top of each other
+um and so maybe the statistics are not
+very obvious but an AI system that's
+able to kind of spot patterns would be
+able to figure out there is some
+connection here and so we talk about
+this a lot in terms of disease but also
+I wonder what happens in terms of uh
+making people superhuman I mean if
+you're really able to Tinker with the
+genetic code right the possibilities
+seem endless so what do you think about
+that is that something that we're going
+to be able to do through AI I think one
+day I mean we're focusing much more on
+on the on the disease profile and fixing
+yeah that's the first step and and I've
+always felt that that's the most
+important if you ask me what's the
+number one thing I wanted to use AI for
+and the most important thing we use AI
+for is for helping human health um but
+then of course beyond that one could
+imagine uh aging things like that you
+know is of course there's a whole field
+in itself is aging a disease is it a
+combination of diseases can we extend um
+our healthy lifespan um these are all
+important questions and I think very
+interesting and I'm I'm pretty sure AI
+will be extremely useful in helping us
+find answers to those questions too you
+I see Memes come across my Twitter feed
+and maybe I need to change the stuff I'm
+recommended but it's often like if you
+will live to 2050 you're not going to
+die yeah uh what do you think the
+potential Max lifespan is for a person
+well look I know those a lot of those
+folks in aging research very well I
+think it's very interesting the
+pioneering work they they do um I think
+there's nothing good about getting old
+and your body decaying I think it's you
+know if anyone who's seen that up close
+with their relatives it's a pretty hard
+thing to go through right as a family or
+or the or the person of course and um
+and and so I think anything we can
+alleviate human suffering and and extend
+healthy lifespan is a good thing um you
+know the natural limit seems to be about
+120 years old but um from what we know
+you know if you look at the oldest
+people that that that are lucky enough
+to to to live to that age so there's you
+know it's it's it's it's a it's an area
+I follow quite closely I don't have any
+I I guess new insights that are not
+already known in that um but I do I I
+would be surprised if there if that's if
+that's the limit right because there's a
+sort of two steps to this one is curing
+all diseases one day which I think we're
+going to do with isomorphic and the work
+we're doing there our spin out our drug
+Discovery spin out um but then that's
+not enough to probably get you past 120
+because there's some sort of then
+there's the question of just natural
+systemic Decay right Aging in other
+words so not specific disease right uh
+often those people that live to 120 they
+don't seem to die from a specific
+disease it's just sort of just general
+atrophy um so then you're going to need
+something more like Rejuvenation where
+you you you rejuvenate your cells or you
+you know maybe stem cell research you
+know companies like Altos are are are
+working on these things resetting the
+the cell clocks um seems like that could
+be possible but again I feel like it's
+so complex because biology is such a
+comple licated emerg system you need a
+in my view you need AI to help to to be
+able to crack anything anything close to
+that very quickly on Material Science I
+don't want to leave here without talking
+about the fact that you've discovered
+many new materials or potential
+materials uh this stat I have here is
+known to humanity uh recently were
+30,000 stable uh materials you've
+discovered 2.2 million with a new AI
+program yeah um just dream a little bit
+because we don't know what all those
+materials can do we don't know what you
+know whether they'll be able to handle
+being out of like a frozen box or
+whatever uh dream materials for you to
+find in that set of new materials well I
+mean we're working really hard on
+materials to me it's like the next uh
+one of the next sort of uh big uh
+impacts we can have like the level of
+alpha fold really in biology but this
+time in chemistry in materials you know
+I dream of uh one day discovering a room
+temperature superconductor so what will
+that do that's another big meme that
+people talk about well it would help
+with the energy crisis and climate
+crisis because um if you had sort of
+cheap uh superconductors you know then
+you can transport energy from one place
+to another without any loss of that
+energy right so you could potentially
+put solar panels in the Sahara Desert
+and then just have a the the the the
+superconductor you know uh funneling
+that into Europe where it's needed at
+the moment you would just lose a ton of
+the power to heat and other things on
+the way so then you need other
+technology like batteries and other
+things to store that because you can't
+you can't just pipe it to the place that
+you want without without without being
+incredibly inefficient so uh but also
+materials could help with things like
+batteries too like but come up with the
+optimal battery I don't think we have
+the optimal battery designs um that
+maybe we can do things like uh
+combination of materials and and and
+proteins we can do things like carbon
+capture you know modify uh uh algae or
+other things to to do carbon capture uh
+better than um uh our artificial system
+um I mean even the one of the most
+famous and most important chemic
+chemical processes the harbor process to
+make fertilizer and ammonia you know to
+take nitrogen out of the air um was was
+was something that allows modern
+civilization uh but there might be many
+other uh chemical processes that could
+be catalyzed in that way if we knew what
+the right Catalyst and the right
+material was um so uh I think it's going
+to be would be one of the most impactful
+Technologies ever is to to to basically
+have
+in silico design of materials so we've
+done step one of that where we showed we
+can come up with new stable materials
+but we need a way of testing the
+properties of those materials because no
+lab can test 200,000 you know tens of
+thousands of materials or millions of
+materials at the moment so we have to
+that's that's the hard part is to is to
+do the testing you think it's in there
+the room temperature superconductor
+think um well I heard that we we
+actually think there are some super
+conducted materials I I I I doubt their
+room temperature ones though but uh I
+think think at some point if if it's
+possible with physics um an AI system
+will one day find it so that's one use
+uh the two other uses I could imagine
+probably people interested in this type
+of work toy manufacturers and militaries
+yeah are they working with it yeah toy
+Manu I mean look I think there is
+incredible one I mean big part of my
+early career was in game design yeah
+theme park and simulations that's what
+got me into simulations and AI in the
+first place and why I've always loved
+both of those things and if in in many
+respects of the work I do today is just
+an extension of that um and and I I just
+dream about like what could I have done
+what kinds of amazing game experiences
+could have been made if IID had the AI I
+have today available 25 30 years ago
+when I was writing those games and I'm a
+little bit surprised the game industry
+hasn't done that I don't know why that
+is we starting to see some crazy stuff
+with NPCs that like are starting but but
+of course that be like intelligent you
+know dynamic story lines uh but also
+just new types of AI first games with
+learning consist with with characters
+and and agents that can learn um and uh
+you know well once worked on a game
+called black and white where you had a
+creature that you were nurturing was a
+bit like a pet dog that that that leared
+what you wanted right and but we were we
+were using very basic reinforcement
+learning this was like in the late '90s
+you know imagine what could be done
+today uh and I think the same for for
+maybe smart toys as well right um and
+then course on the militaries you know
+uh unfortunately AI is a du Dual Purpose
+technology so one has to confront the
+reality that um especially in today's
+geopolitical world uh people are using
+some of these general purpose
+Technologies to apply to drones and
+other things and um it's not surprising
+that that works are you impressed with
+what China's up to I mean deep seek is
+this new model impressive um it's a
+little bit unclear how much they relied
+on on Western systems to do that you
+know both training data there's some
+rumors about that uh uh and and and also
+maybe using some of the open source
+models to as a starting point um um but
+look it's for sure it's impressive what
+they've been able to do um and um you
+know I think that's something we're
+going to have to think about how to keep
+uh the Western frontier models in in the
+lead I think they still are at the
+moment but um you know for sure China is
+very very capable engineering and and
+scaling let me ask you one final
+question um just give us your vision of
+what a world looks like when there's
+super intelligence so let's move past we
+started with AGI let's know super
+intelligence yeah well look I think for
+there you you you two things there one
+is um I think a lot of the best sci-fi
+can we can look at as as interesting
+models to debate about what kind of uh
+uh Galaxy or or or Universe do we want
+to a world do we want to to to to move
+towards and the one I've always liked
+most is actually the culture series by
+Ian Banks um I started reading that back
+in the '90s and and I think that is a
+picture it's it's like a thousand years
+into the future but it's in a post AGI
+world where there are AGI systems
+coexisting with Human Society and also
+alien society and we we've Humanity's
+basically maximally flourished and
+spread to the Galaxy and um I I I that
+that I think is a great vision of um how
+the thing things might go if in in the
+in the positive case so um I'd sort of
+hold that up um I think the other thing
+we're going to need to do is as I
+mentioned earlier about the under under
+appreciating still what's going to come
+in the longer term I think there is a
+need for great philosophers to you know
+where are they the great next
+philosophers that the equivalence of K
+or Vicken Stein or even Aristotle um uh
+I think we're going to need that to to
+to help navigate Society to that next
+step because I think the you know a AGI
+and artificial superintelligence is
+going to change um uh humanity and The
+Human Condition Demis thank you so much
+for doing this great to see you in
+person and hope to do it again soon
+thank you thank you very much all right
+everybody thank you for listening and
+we'll see you next time on big
+technology podcast

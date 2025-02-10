@@ -1,0 +1,1366 @@
+thank you for joining we have a really
+really good session for you today uh let
+me introduce myself my name is Gad I'm
+the founder of tensor Ops and CTO
+apparently um these days uh we are a
+consulting company these days we're uh
+really in the hype of thei trying to
+help companies build AI Solutions on top
+of their environments we work with some
+incredible companies like noan already
+lra and jrog companies that you may know
+companies that you may not know but um
+never mind you'll get to know them maybe
+some
+um I have today with me Gabriel who is
+one of our senior Engineers how are you
+doing Gabriel hey good great to be
+here so um we wanted to speak today
+about um cost of uh do doing AI for Less
+because we do notice that cost is is
+really becoming one of the most
+interesting topics as uh AI applications
+are getting through uh getting out of
+the garage towards production and what
+we wanted to discuss is about uh three
+main topics right one is what does it
+mean cost in application why is it so
+important we're going to go over it
+quite quickly and then we're actually
+going to talk about how to navigate the
+cost versus Fitness trade-off uh or cost
+versus Fitness landscape in AI
+applications and eventually we're going
+to focus on uh method and techniques
+which is going to be the main part of
+this uh of this session so um why is a I
+uh differ from other software
+applications because effectively AI is
+just software right uh and just like
+backend is not the same as front end and
+just like mobile development is not
+equivalent to uh developing application
+for desktop AI is different but AI is
+also different from uh software
+traditional software in a way that it
+can do autonomous decision making or it
+can do predictive it has predictive
+capabilities and another thing that's
+really different with AI in our
+perspective is that cost is a dimension
+and what do I mean by cost is a
+dimension so as I told you we are a
+services company uh building AI
+Solutions so we already built a few
+solutions for customers and what I did
+is that I went to ask uh my my team um
+can you give me some examples to how
+much um does it cost to run the
+workflows that you build for the
+customers right so for example if you
+build a solution that's based on AWS
+Lambda which if you don't know it's like
+this serverless uh service that what it
+allows you to do is to basically host
+very simple functions or very very
+simple servers on AWS and ask them how
+much does it cost to run about a million
+request now these are not like very well
+established statistics right because um
+you may get a bit of a different number
+up or down this is not based on uh
+enough numbers to get statistics but uh
+I think it is a fair presentation to
+give a sense to why AI uh cost in is so
+so important so Lambda for example a
+million request is going to cost you
+$5 and if you're adding to it a database
+like a cloud SQL um then you're around
+about 200 uh request $200 per a million
+requests so think about myself um I want
+to serve a million times that people are
+going into my website uh and let's say
+each and everyone is making just one
+request then the whole cost of Hosting
+this website is going to be $200 which
+is not a lot of money at all now if I'm
+adding a little bit of AI to it like the
+Google AI vision for example for face
+detection then we're talking about
+$1,500 but when you think about AI
+really like these days you're thinking
+about chatbots right like a 3.5 agent or
+GPT 4 agent
+now when you go to 3.5 uh an example of
+an agent that we built we find that it
+cost 50,000 and again maybe in your case
+it was a bit different maybe um uh then
+the numbers are are are different but I
+just want to give you a bit of a sense
+um what's and and you know the obvious
+thing here is AI is expensive uh thank
+you very much Captain Obvious but I
+don't want to focus just on the bad part
+of AI being uh
+being bad the bad part of AI cost being
+high but actually talk about the
+opportunity that's here and the
+opportunity lies here here right so as
+it turns out uh this uh GPT 3.5 agent
+and the GPT 4 agent are actually the
+same application right and how how can
+that be so very often what you do in in
+llm applications is that you have a
+python app that a developer goes and
+write uh maybe it contains some kind of
+a length chain code and then that Leng
+chain code is going to make calls to an
+external llm to GPT 3.5 or GPT 4 and you
+can switch between GPT 3.5 and GPT 4
+quite easily and so with the same
+application you have the opportunity now
+to decide how much you want your
+application to be smart right because
+when you're going to gp4 your a
+application is going to be much more
+expensive but it's actually going to be
+also more um uh uh more expensive but
+more smart so I don't see the cost of
+the application as just being a burden
+but it's also an opportunity because
+uh based on how much you're willing to
+spend you can decide if you want to go
+to the store and buy an Einstein or some
+smart guy that is not in Einstein right
+based on the budget you can decide like
+switch it like a like a like a volume
+switch and and decide how much your
+application what needs to be smarter and
+um the orders of magnitude between
+applications so this is a great uh
+example from uh that I found recently on
+LinkedIn so the the difference es
+between llm applications can be in
+orders of magnitude uh sometimes 2x 3x
+10x and sometimes a thousand X between
+really Advanced models and really small
+models so one thing is yes you have a
+huge opportunity to reduce cost but also
+you have the opportunity to go up if you
+want and this is a notion that I think
+we're going to you're going to see uh uh
+throughout this webinar now if we're
+already talking about notion uh Gabriel
+um so how can I intuitively leverage the
+fact that these models are have have a
+different um have have a very different
+pricing yeah so it's not like you can
+just pick a model because it's cheap
+that's not the point here even though
+you would save a lot of money but
+obviously the results wouldn't be great
+uh here's where we introduced the
+concept of benchmarking models and here
+in this table this is a very common
+Benchmark it's um uh llm leaderboard
+from hugging phas and they just measure
+all the open
+uh models and you can see here that the
+best model isn't the best model at every
+Benchmark because these benchmarks are
+applied to different fields so one of
+them is maths the other is question
+answering the other one is specifically
+designed so that humans are better at it
+than llms so you need to pick a model
+that is yes cheaper but also somewhat
+relevant for your specific use
+case another really cool thing that uh a
+previous client of ours did uh was to
+instead of trying to make their models
+extremely smart and they use gp4 for
+everything what they did was they
+restricted what their users could do
+with llms so in this case they defined
+six six Pro possible interactions that
+you could have with LM in terms of
+creative writing and if you narrow down
+this scope the user experience is a lot
+more controllable and hypothetically
+what you could even do is each of these
+six buttons could send a request to a
+different model model that you
+specifically train to be doing this one
+task very well and these models could be
+much smaller and therefore much cheaper
+so uh again tell tell me a bit about how
+you we can use cost as a differentiator
+in this current market yeah so let's
+take for example things um the the case
+of Clara so Clara is a is a is a
+wonderful company what they managed to
+do is they said using AI assistance we
+managed to do two-thirds of our customer
+service chats uh in the first month uh
+now we don't have the Clara uh
+information so we don't know exactly uh
+what what goes behind the scenes but
+let's say that the human support used to
+cost $25 million before applying AI now
+imagine their first AI solution is a GPT
+3.5 or gy 1.5 turbo and then the cost of
+it as it turns out $1 million and then
+they tried another version which is with
+smarter llm and the cost went up to 10 m
+million dollar so right if you want to
+start to get the sense of saving saving
+money with llms then you may think that
+right so here's an opportunity to save
+$24 million but that's of course a very
+partial representation of the problem
+right if you really want to think about
+the cost reduction that you're going to
+experience then um you actually have to
+look at how much human work is going to
+remain after you apply that AI so let's
+say that in the case of the first
+chatbot after applying $1 million of
+cost to a GPT 3.5 model they had 10
+million more to pay for humans to do the
+work and uh in the chatbot which is more
+smart then humans had less work to do
+and then they only had to pay $5 million
+so effectively when you're measuring the
+cost of your AI application you also
+need to measure the effective reduction
+in in human labor or in the other effect
+that you're trying to uh to achieve in
+the in the automation that you're trying
+to achieve so in this case for example
+solution a is indeed better because you
+manag to do the same thing with $1
+million even though you still need to
+pay more to human support uh as opposed
+to the first one and if you only looked
+at how much cost your saving in human
+labor maybe you would have gone for uh
+for solution number number two so this
+one is to show you that uh monitoring
+the cost of llms just not goes beyond
+just seeing how much you're paying for a
+open or Google
+Cloud so yeah Gabriel um just sorry just
+there a question like um so far we gave
+people intuition to
+um how they can measure or what's the
+importance of of doing a cost reduction
+for llms um how can you effectively uh
+impact the cost of of your bill how how
+can you effectively start to reduce the
+bill so I'll be bit more negative and
+start by which you can't control so we
+all saw that gbd4 is about 20 to 30% of
+the cost that it was when it came out
+and we're all very happy that it got
+cheaper but the reality is this doesn't
+Pro we can't provide value by using this
+because it gets cheaper for everyone so
+this this happened because of Hardware
+advances so Nvidia keeps releasing
+better gpus and selling more of them and
+uh algorithms keep getting more
+efficient so the gp4 model keeps getting
+better it's it's even
+it runs even less weights it keeps
+getting better in in ways that we can't
+even comprehend but we can't control
+this so it's it's useless to us as a way
+to provide value to our
+users but there are things we can
+control so these two things are mainly
+local optimization and this is basically
+the way that we use these models so send
+less tokens to the model try to send
+less requests or architecture design
+which is kind of the encompassing uh
+software around our model so that we
+avoid sending a necessary requests and
+we make it as optimized as possible I
+want to jump in by the way and say that
+uh sorry uh I want to jump in and say
+that if people have questions you are
+more than welcome to drop them in the
+chat or in the Q&A and we'll be happy to
+answer this so while Gabriel is talking
+I'll be answering some questions and and
+so forth so do feel free to uh jump in
+with your question we'll be happy to
+address
+them um so I want to start by local
+optimization and the first thing that
+comes up here is that we said we can
+pick smaller models that are cheaper so
+what does this mean so we're defining
+model size as the number of parameters
+this is not a metric that is absolutely
+comparable some 10 billion parameter
+models are going to be faster than 15
+billion parameter models running on
+another machine but it's a good metric
+to kind of keep in mind for the levels
+of knowledge that these models can have
+uh the rule of thumb for these model is
+that bigger models tend to be better at
+generalizing their tasks so we see that
+gp4 needs a lot less context to perform
+a task that it never heard about and a
+very small model will need a very narrow
+scope and this kind of leads us to the
+conclusion here that if you want to
+reduce your costs you'll probably want
+to reduce the size of your models and
+there's two things you can do and you
+can't get away from this you'll either
+narrow down the scope of your your
+application or you will be giving up on
+some accuracy along the
+way so it's interesting can you go back
+to that one so effectively what I think
+we saw is that these are the main two
+trade-offs that you're going to make
+when you're going to uh build llm
+applications right either you're going
+to make your llm more narrow so my llm
+cannot do math it cannot do uh generally
+llms cannot do math but maybe my llm
+cannot do summarization and my llm
+cannot do um a generation of of of
+stories but it can do really really well
+extraction of specific knowledge or
+formatting um or you're going to say my
+LM can is still has broad uh set of
+skills but it has less
+accuracy so um really really
+interesting yeah we see this all the
+time where very small LMS outperform GPT
+for in extremely narrow context so this
+is how powerful it can be
+MH so uh I'm not going to talk a bit
+about a very common technique to improve
+performance of the models of course this
+is not just about performance uh but
+also about so if you improve the
+performance of a smaller model you can
+use this as a cost reduction technique
+as well so an example that we would like
+to use here is the emotional prompts
+this is a prompting technique that
+essentially just adds um emotional cues
+to the your prompts and a lot of
+researchers found out that llms respond
+well to emotional prompts and it
+increases the accuracy of your responses
+by 10 to 20% nothing crazy it's not
+going to make gbd3 become like solve all
+the world's problems however what it
+does is it kind of exposes this
+correctness uh graph that we're seeing
+here so gpt3 is correct
+has a bit of an overlap with gp4s
+depending on the prompt so if you have a
+very very good gpt3 prompt let's say
+emotional prompt and all the prompting
+techniques it will perform about as good
+as a gp4 out of the box uh and this
+doesn't seem that exciting when you
+think about the price difference between
+gpt3 and gp4 which is about 10 times as
+expensive as gpt3 you can see that
+there's a huge amount of value that you
+can provide here by simply doing better
+prompts and using a small
+model and this is kind of what we did
+with another uh client of ours so this
+is panaya they're part of infosis and we
+wanted to summarize a few sap system
+notes these are very dense notes they're
+terrible to read because they're a lot
+of small like acronyms and things that
+no one understands but by summarizing
+them with LMS they can be readable in
+two to three minutes and people
+maintaining these systems can do it
+better and we found out that gp4 out of
+the box was almost like this all know
+entity that could summarize anything but
+it was expensive it was slow it wasn't
+that great to deal with but gpt3 with a
+very very good prompt was just as good
+it took us a bit longer but now we have
+an application that is faster and
+cheaper and another example of this type
+of development of prompting engineering
+techniques is the chain of density
+prompt this is developed by Salesforce
+and the I don't want to focus too much
+on the papers but it's basically you
+expand your summaries iteratively by
+adding new context
+by adding new like words like new
+keywords and this makes a lot more calls
+to the model but it allows you to use
+much smaller models and therefore save
+some money on not using gp4 yeah well I
+want to jump in because this is not a
+webinar on improving model accuracy
+right so we did have a great webinar
+about prompt engineering techniques and
+how you can get the most out of your
+llms um so obviously all of these
+techniques in which you're doing prompt
+Engineering also introduces uh increas
+in tokens and I think your next slide is
+going to talk about because okay I
+understood the basic idea right that if
+you are taking this um llm and you're
+doing really good prompt engineering so
+you can go down from GPT 4 to GPT 3.5 or
+from a bigger model to a smaller model
+and get the same accuracy because you're
+doing really good prompt engineering but
+then you're paying more because you're
+actually introduce more tokens so uh you
+know if these like PR enger techniques
+very often you use few shot and you use
+a a lot of techniques that are going to
+add a lot of tokens to your input so
+every time you're actually sending more
+tokens um how can you actually go back
+and fix
+that so a very good example of how to
+reduce these tokens is to use some kind
+of compression of your prompts uh the
+one that I wanted to talk to you about
+here today is llm lingua so this is a
+technique that basically trains a model
+to decide whether a token in the prompt
+is relevant or irrelevant and what
+researchers found was that most of the
+words in the way we speak English are
+completely relevant to llms and they can
+be completely removed and here we can
+see that we run it through this model
+and then in the end hopefully sometime
+soon we get a result which is much
+smaller but that theoretically uh will
+have the same effect on the llm so we
+will won't be losing any performance at
+all it's just going to become faster and
+cheaper so this kind of counteracts
+these very big prompts that we
+make and so this is the explanation of
+how it works they train a model to
+classify every token into relevant not
+relevant delete the irrelevant and then
+compress it and then do the same thing
+you are going to do with the prompt
+afterwards yeah so I want to talk about
+the elephant in room because when you're
+talk about llm cost reduction uh it's
+always about how can I pay less for
+achieving the same level of accuracy I
+had before right so if you want to talk
+about achieving the same level of
+accuracy or achieving the same
+performance of the same Fitness to my
+problem I actually need to speak about
+how to do evaluation and one thing that
+is very very tricky with llms is that
+the evaluations are very very not
+trivial sometimes for example for the
+benchmarks you're actually using a a
+more expensive model so in in many of
+these like scoring tables scoring
+leaderboards you are using the most
+advanced model to evaluate the accuracy
+of the other models so that's kind of
+stupid if you're in your system sorry
+sorry for the harsh words but if in your
+system you have to just to validate that
+you're doing something right use a more
+expensive a AI then you actually haven't
+saved anything if you reduce the the
+size of the model so um let's talk a
+little bit about evaluation to give you
+a sense of how can evaluation still be
+effective if you are uh if you're trying
+to uh reduce cost and not pay for it too
+much especially since a lot of the
+evaluation is actually done by humans
+right so if you want to get and Gabriel
+is going to mention it if you want to
+get like really really good evaluation
+you effectively have to expose the
+results to human beings so Gabriel give
+us your two cent on
+evaluation I certainly have a lot to say
+about evaluation some more controversial
+controversial than others but the
+starting point for your evaluation is
+usually this table that we showed you
+previously so you look at a table of
+models a bunch of scores you pick the
+highest score and use that one and this
+very quickly kind of became a game to
+people developing these llms so it's a
+very good starting point but we can't
+just do this it's not enough for us to
+to just use these benchmarks and then
+call it a day it's you're not going to
+provide much value this way so another
+type of Benchmark is like Gad was
+telling you about so human evaluation so
+in this case this is chatbot Arena and
+basically users are presented with two
+possibilities uh generated by two
+different models and they pick whichever
+answer they prefer and what we see a lot
+is that most of the times new llms will
+tend to outperform everything in the
+benchmarks but you get to the human
+evaluation this is where it really like
+comes to it and most of the times the
+bigger models tend to perform here and
+opening I tends to perform much better
+so there's a bit of a disconnect between
+benchmarks and human
+evaluation so this kind of brings me to
+want to Define with you what's a good
+evaluation and a good evaluation is
+always whatever your is closest to what
+your users would think this is the whole
+point right so if your users think that
+evaluating your your new model in a in a
+worse manner then it doesn't matter
+right so a technique that people try to
+use to approximate human evaluation is
+to use llms llms in a lot of ways think
+like us so the logic is that if you use
+a very smart llm and ask it which of
+these answers is best it can probably
+get it right but what we're starting to
+find with newer and newer research is
+that llm as judges tend to correlate
+better with non-experts in the field uh
+in question uh and not as well with
+experts so we can see here in the in the
+plot and this is a very recent research
+that came out uh even GPT 40 only has a
+correlation of not even 05 with real
+human experts and this is quite
+dangerous because the it's not perfect
+at all right so it kind of there's kind
+of a gap here and this is the gap that
+the New Concept of foundation evaluation
+large language models are being trained
+to fill so we Define that we want to be
+as correlated with human perception as
+possible and people are now developing
+models that are specifically trained for
+this purpose so they're trained on pairs
+of of uh outputs and they try to
+optimize to be as close to what a human
+would say is the best one as possible
+and this is the concept of new Galileo
+Luna Foundation foundational model which
+is already are performing all GPT models
+on evaluating so an llm as a judge
+workflows and it can be further
+fine-tuned on your own uh evaluation
+that ass sets so that it correlates
+better with your
+users yep uh just before jumping into
+this one I am seeing from Mark um a
+question here about um uh what could you
+do when when you're not sure if the AI
+is going to achieve the results that
+you're going to get we have a slide on
+that later so I'm going to keep your uh
+your question for later and if you have
+more questions by the way drop them so
+and we will make sure we answer them uh
+either through this uh webinar or uh
+throughout this webinar or uh through
+the slides or through a talking to you
+so um yeah Gabriel is basically saying
+um in order to really evaluate if your
+llms are uh if your LM application is
+doing well enough you need to go to the
+humans this is of course the most
+expensive way of evaluating and then you
+see these like specialized llms for
+doing evaluations that it actually turns
+out that in order to evaluate if your um
+llm application is doing well on a
+specific task you can use actually a
+smaller llm that is specialized in doing
+that but the problem is that not
+necessarily it's going to be very very
+much correlated with uh with human with
+humans so what you can see is the
+question how you going to EV validate
+the validators right how you going to EV
+validate the evaluators and one thing
+that you can see is that is this uh
+great work uh from very recently 2024
+that shows that you can calibrate on
+occasions your your validator so it
+would set fit uh the expected behaviors
+of your users or your human labelers so
+in that way you're actually using you're
+leveraging um the fact that that humans
+can calibrate with very few examples the
+uh validator and then you're using the
+validator to go against your uh more uh
+uh bigger data set or more more data so
+um I like that that research quite a
+lot so we talked a little bit
+about sorry we talked a little bit about
+doing the evaluation now let's get to uh
+some more techniques about how to
+actually reduce cost and if you need to
+talk about reducing the cost of llms uh
+you're probably going to talk about
+quantization right so what I'm talking
+about quantization Gabriel mentioned
+before that the more parameters the
+model has it becomes more capable and
+there was a question here in the chat um
+what happens when you're going to a
+smaller models you're using you're like
+you're like losing a little bit of the
+generalization of the of the model and
+that and that's very much accurate so uh
+the more parameters you have the model
+is more capable but the number of
+parameters is not the only uh critical
+Factor that's going to determine so
+these parameters are effectively numbers
+right uh typically they're uh 16 uh bits
+they're presented by 16 bits uh what if
+I could take this 16 bit number and just
+use it use less bits to represent it now
+quantization is not what you see here
+right it's not that you just trim the
+floating point at a certain point and
+just keep it like that it's a more St
+statistically heavy process but this is
+actually a fair illustration because it
+shows you that what you're effective
+going to do is you're going to take uh
+big numbers that go in the in these
+parameters and represent the same
+parameters with significantly smaller
+numbers now what is it going to do to
+your llm well uh first of all let's see
+the results whenever you're hearing of I
+managed to run this llm in within my
+browser or I managed to run it from my
+MacBook and I got very very low latency
+these are the results that you're
+getting uh I need to find a source for
+that uh because I took it from Twitter U
+but this is a great example oh yeah
+actually show down here shows down here
+this is a great example to how you can
+build really really fast llm systems
+that can be deployed on premise on your
+MacBook inside the browser that give you
+really really really quick uh and quite
+accurate results so qu models are the
+basis behind all of these demos that
+you're seeing about really lean llm
+systems uh let's give you a little bit
+of intuition to how it can work so uh
+here's a list of the Lama 2 uh 7 billion
+13 billion and 70 billion parameters and
+you consider what's the size of the um I
+would say Foundation model with before
+uh find uh sorry before the quantization
+so you see that um you uh are starting
+from 13 gigs and you're going up to
+almost 140 gigs and 140 gigs is bigger
+than whatever uh GPU you're going to
+find uh out there uh available to the
+public so if you want to host a llama 2
+70 billion parameters on in its original
+uh parameter size you're actually going
+to have to split the model into several
+gpus and of course that makes the price
+significantly higher U now going back to
+going to the right to the quanti size
+you actually see that the size is is
+reduced dramatically and even the
+biggest llama 2 that you have here the
+70 billion is only 40 gigs and you
+actually have gpus that can accommodate
+this this single lava 270 billion
+parameters now the obvious question is
+what is it going to do to my accuracy so
+what meta found is that um actually um
+you should go probably for more
+parameters with less Precision right if
+you measure this on benchmarks and on on
+uh real life task these quantized models
+are actually doing better than models
+with uh more
+parameters uh sorry models with less
+parameters that have full Precision um
+so that's quite interesting because the
+effect of it this is for example a
+service from AWS called jumpstart U and
+you can see the difference between uh
+this the 8 billion and the 70 billion on
+the Llama 2 uh Lama llama 3 sorry so you
+can see that in order to host the
+smaller model which is a full size
+you're going to pay 3,000 and when
+you're going to go to the bigger model
+you're G to pay 23,000 per month for
+that machine with that uh uh with that
+many many gpus so effectively if you can
+reduce the size of the machines that you
+need for hosting you're going to see
+reduction in uh uh at least in order of
+magnitude as you can see here or this
+one it's almost in order of
+magnitude um I do want to speak about a
+misconception that is very often
+associated with um quantized models and
+host your nlms so Eugene Yan is one of
+the greatest Consultants of llms uh he
+recently wrote a blog post about uh the
+lessons that he's learned from a year of
+applying llm applications and he's
+saying obviously before you're getting
+into production or before you are uh
+develop and you have big traffic you do
+not use gpus you always go to uh man
+service man service being GPT 40 or
+Gemini these hosted llms and the reason
+is is quite natural like people think uh
+of course when I'm just paying when I
+need the LM this is significantly
+cheaper than you know setting up an
+instance having it not very utilized and
+then of course like the upper way in
+which you see like I'm paying very
+little for every request that I'm that
+I'm making versus scaling up and down
+this hugging hugging face model that
+that I hosted now what we found is not
+necessarily that when you scale up you
+will actually save money by hosting your
+LMS this is not true at all cases so it
+can be true but not at all cases and why
+is that uh because these models uh do
+not scale very well it's hard to make
+parallel requests and still even if you
+quantize models it's quite difficult to
+put a lot of models on the same machine
+and utilize them very well you will see
+that you will not see even at a fairly
+fairly nice large large scale uh the
+scaling of the system is not as
+efficient as what probably open AI is
+doing so I don't know if openi is just
+losing money on their hosted llms I
+don't know if U they're doing something
+really smart behind the scenes but from
+our experience uh even in larger scale
+it doesn't mean that quantized models
+are going to be cheaper than uh hosted
+llms when is it going to be cheaper so
+as again uh the dimensions that you have
+to look at when you're doing llm
+optimization or llm application
+optimization is not just cost versus how
+much I want availability but also
+against the task uh this open AI model
+is a general purpose model so it has uh
+the ability to do a lot of tasks whereas
+the quantise model is typically used for
+cases where you can narrow down the task
+so when you're already comparing narrow
+small llms that are limited in their
+ability then in this case yes you can
+get cost reduction so it's not I would I
+would I would warn you from uh having
+too many too many hopes that a quantized
+model is going to be more cost efficient
+than a GPT 40 these manage services
+typically for general purpose are more
+efficient even in higher scales when
+you're talking about specialized task
+however you can see cases for example
+like buzzfed buzzfed said already um I
+think more than a year ago that they
+managed to reduce 80% of the cost uh by
+using a self-hosted llm find tune to a
+specific task but it's really really
+important they even say it in their uh
+in their blog post that is compared to
+the general purpose llm so uh that is
+one thing that I think you should uh
+come out with um from this
+webinar uh so we talked about that local
+optimization and when I'm talking about
+local optimization I'm talking about the
+way that you interact with a single LM
+right how can you write the request
+either prompt or go to the single LM
+that is cheaper now very often you saw
+that these decisions are not Standalone
+uh when you're building an LM
+application you're actually building an
+architecture around it so what are the
+architectural decisions that you can
+make in order to reduce costs uh and one
+of the things that you will see like we
+mentioned in the notion case is that
+your llms can be defined to perform
+several tasks for example summarization
+or expansion or bulletti and once you
+know which task your llm is doing
+perhaps you can route the task to the
+right llm you can have multiple llms
+that are doing uh very specialized task
+and by that you're reducing uh you're
+reducing the cost because maybe one
+needs to do uh calling math functions
+and now one needs to help uh you do
+coding and another one needs to do uh
+interact with different
+languages so uh we go next one so there
+is this company called Martian for
+example that offer their own design
+pattern that you're going to see it's
+called a router uh and the router is
+allegedly supposed to give you results
+that are
+gp4 uh but for lower cost and uh better
+latency so the idea of routing the
+request to the WR llm is already
+something that we seeing being
+commercialized uh and you should
+definitely look at these kind of
+solutions now you're not necessarily
+going to go and send all of your data to
+a a commercial model rouer some people
+want to implement that and I did say I'm
+not going to talk about local
+optimization I'm not just going to talk
+about how to interact with the LM in a
+more efficient way so why do I call it
+an architectural decision I call it
+architectural decision because very
+often this a decision on how to route on
+where to Route the call STM is not done
+on the application Level but it's done
+on the environment level so in this this
+case for example the environment can be
+your Cloud environment and you're
+deploying that a proxy server it could
+be like llm for example or it could be
+uh U llm studio with some extra Logic on
+how to write llms based on uh some
+either parameters that it's getting or
+some techniques that gra is going to
+show and that um that unit is going to
+Route it to either entropic open or to
+the right llm so um that's an
+architectural decision that we recommend
+customers to do not manage this routing
+on the application Level but think about
+it on the organization or environment
+level um so arel I want to bring it back
+to you because uh I can only speak high
+level uh if you have this smart router
+how can you actually Implement a logic
+about uh can give you some examples to
+how you can Implement a logic in that
+router that's going to reduce the cost
+of LMS because again we are in an L AI
+for Less uh uh uh
+webinar yeah thank you so let's just
+take a small peek inside the black box
+of these these routering Services of
+course we don't know exactly what you're
+doing internally but let's have a few
+guesses so one of the patterns that you
+can Implement for this use case is
+cascading so the idea is that you define
+a scoring model and this is very common
+in like fine tuning workflows in a lot
+of llm workflows where you train a model
+to to either match your like the
+preference of users or you define some
+kind of hallucination likelihood score
+and you create a threshold for accepting
+an answer so let's say you go to a 7
+billion parameter model and then it's
+not accepted so you go to a bigger model
+and then if it's accepted you just stop
+and it's done and you saved a bunch of
+money if it's not in the end you get to
+whatever it's the most expensive model
+in your life so it could be gp4 you
+could have less tolerance for expensive
+models but this is the idea behind it if
+you and I think one of the things sorry
+to jump in but one of the things that's
+really important here is that you're
+starting with a smaller model right
+because it's significantly cheaper to go
+to the smaller model like orders of
+magnitude cheaper so like uh 1% or even
+less than 1% uh to try it with the uh
+with a smaller model before going to the
+to the Bigg one so the opportunity of
+saving is significantly bigger than what
+you would already know that you're GNA
+pay uh and that is great but and there
+is a huge butt here how are you going to
+know that you can actually go how can
+you get that like score is enough or not
+enough so are you going to crash against
+the user and going to show the results
+and then if the user is not happy you're
+going to upgrade to the B model because
+you know Cascade has has this problem so
+how can you give me an example Gabriel
+to how would you decide to go
+upwards so you could use uh depending on
+what the model outputs you could for
+example use the probabilities of the
+tokens that were output and use this as
+a hallucination metric or you could
+train your own model for this specific
+use case and this is something that is
+quite common of course you need a bit
+more effort and bit more data but for
+example at the scale of the Martian
+router it certainly is worth it to do it
+right so I saw another I saw another one
+which was interesting um so it was
+saying uh assuming that the uh llm was
+given a task and my task is has
+something to do with accuracy so the
+more the llm is
+confident uh in the results the results
+are going to come the same right so um
+let's say I'm asking the llm several
+time the same question and then it's
+going to uh provide the same answer so I
+can know that the LM was confident in
+giving me back the this answer so if I'm
+getting the same answer multiple times
+um then I know that I'm okay and it's
+actually more uh profitable to call or
+it's lower cost to call Mistral 10 times
+than to go to GPT 4 one time so you're
+calling it enough time to decide if you
+got the same result again and again and
+if the variance in the result is too big
+then you're increasing so that's like a
+a good example that of uh how variance
+in the responses can be the key to go to
+a bigger
+model yes it's a very smart way to to do
+it and if as long as your models are ERS
+of magnitude a part in terms of cost
+it's always worth
+it so another approach to this problem
+is to Simply have uh either on the
+product side like we saw with with
+notion or another model smaller one
+decid which topics should go to each
+type of model so if you have a Spanish
+uh model and an English model you can
+very easily detect which language the
+question was in and do this routing and
+or if you have a model that classifies
+how hard the problem is or if it needs
+to be forwarded for gp4 for a certain
+reason uh it is but if if it doesn't
+have to then it isn't and as long as you
+get like 10 to 20% not going to gp4 it's
+already worth it and these are the main
+two ways to do it but these days with
+more Leading Edge Tech we see this
+routing logic being embedded into the
+models themselves and this is the case
+for most most uh of the most recent
+models so gp4 is allegedly a mixture of
+experts model uh which is what what they
+call embedding this into the model and
+like Mixr is doing this meta is probably
+wor working on this as we speak so it is
+the future of llms but what this
+essentially does is every layer of the
+model has different experts and at every
+layer you decide which expert should
+address this specific problem usually
+you go to more than one but that's kind
+of besid the point but this allows you
+to in a 100 billion parameter model only
+run 10 billion parameters so it's like
+10x uh in terms of speed however current
+archit ures can't have the models
+outside of memory right now so these
+models still take up too much memory as
+if they had 100 billion parameters so
+what I'm saying here is that in the
+future these architectures for routing
+could be obsolete but so far it doesn't
+look that
+way thanks so uh we promised people uh
+to talk about architectures so if we
+want to talk about architectures um we
+want to talk about the two design
+patterns that see these days there are
+more design patterns like Tic workflows
+and chains that we're not going to
+discuss about uh but we chose to focus
+on very two in which um the way that you
+define the trade-offs is going to very
+much Define the architecture and very
+and have a huge impact on the cost and
+I'm of course talking about uh a big
+question that is being raised of rag
+versus large context and in order to
+address this question uh we came up with
+a with a good example so at least in my
+opinion and we gave this example I think
+more than a year ago in a webinar that
+Gabriel and I did uh um we gave it the
+same name of the a16z um article
+emerging architectures of LM
+applications you should probably watch
+it it has about 15,000 views um so uh we
+defined something called the Harry
+Potter dilemma that we a little bit uh
+we develop a little bit so let's take
+the one of the Harry Potter books right
+uh one of the Harry Potter books cannot
+go into the context of one llm and we
+want to give it the llm two tasks on the
+uh sorry sorry it can but not
+necessarily uh we want to give the Harry
+Potter book two different tasks which
+can be llm tasks in one of them I want
+to ask which candy did Harry Potter eat
+on the uh train to Hogwarts right this
+is a question answering task that AI can
+do and on the right I'm going to ask uh
+tell me the story
+of the book let's say the philosopher
+stones from Ron wh sorry Ron Wiley's
+perspective now uh that is a rewrite
+task of OI and both of them are very
+very legitimate test to give to to an
+llm so um this one is going to help me
+demonstrate uh the concept of using rag
+versus large context and let's start
+with rag so in the first question first
+I'm asking in which candidate Harry
+Potter is on the way to hard wordss I
+don't need to read the whole book right
+I if I can find the relevant Parts maybe
+the train to hws I can identify that
+this section is talking about the train
+to hor wordss Maybe by you know
+identifying the word training the
+chapter and then just bringing that
+chapter then I can narrow down the
+amount of data that I'm sending to the
+llm and that is effectively the idea
+behind rag so the idea behind rag is
+that you're putting a query uh for
+example what uh candidate Harry Potter
+it on the way to Hogwarts and then you
+send it to a retrieval system and the
+retrieval system can do retrieval at
+significantly lower cost for example U
+elastic search right so elastic search
+can find keywords and find the word uh
+train at a significantly lower cost than
+uh running an llm on top of the whole
+data and then only the relevant data is
+going into the llm together with a
+question the original question that the
+user asked you're putting it in and
+you're getting a generated result uh and
+this is something for example that we
+implemented together with panaya on
+there Seymour a lot of these cases that
+you see of uh uh you know assistants or
+usage knowledge chat sorry corporate
+knowledge chat Bots uh they not
+necessarily need um to have all of the
+information of your organization they
+don't need to be trained on all of the
+information of your organization or
+being fed with all of the knowledge of
+your organization uh for every question
+you can go and find the relevant
+documents before fit it into the llm and
+get proper
+results uh the the impact of it like uh
+this one is from the Gemini 1.5 Pro
+technical uh document is that if you use
+all of the tokens uh you can pay a few
+dollars maybe half a dollar in this case
+allegedly and then if you're only
+sending a few data like less data then
+you can save a lot of money now this is
+a great design pattern and a year ago
+everybody thought that rag is going to
+be the solution for all of their
+problems but it certains out that this
+is not the case um but before going to
+like this rag Gabriel a few techniques
+that you can give me about still
+optimizing and reducing the cost of
+rag yeah so we talked about rag itself
+as a cost-saving technique but I feel
+like a very important point is to apply
+what we just just uh talked about into a
+rack system so that we can see what it
+really looks like to start like saving
+money on different parts of these
+systems so let's say you have a simple
+chat bot that answer questions about a
+database of products you have internally
+so let's say you're apple and you're
+doing questions about iPhones right so
+you just do what every rag application
+does you go to you use opening ey
+embeddings you use these embeddings to
+retrieve on a vector database you send
+what the documents you retrieve to gp4
+and you have an answer no big deal it's
+really expensive really slow but it
+works what we can do and this is what we
+talked about before we can just switch
+out the llm which is the biggest cost in
+this whole system for a cheaper llm so
+let's say we have our own finetune llama
+we have a quanz llama Or Another hosted
+service whatever we can just switch it
+off and then put in the the Llama
+instead and you just save like 50% of
+the
+costs however in v in rack systems we
+have another variable which is the
+embedding system so embeddings for
+example from openi out of the box are
+quite good but they're not going to be
+tuned on your specific use case and it's
+kind of like GPD models in a way so what
+you could do is simply train your own
+embedding model and you could use
+smaller models so therefore making the
+whole thing cheaper and faster already
+uh but also you can make it more
+relevant by training out on your data so
+you would have better context so you
+need less of it in the llm so you'll
+also save money this
+way another thing you can do is to
+compress what you retrieved so let's say
+you retrieved 10 products from your
+vector database uh and they're not all
+relevant but if you send this to gp4 it
+will probably be able to ignore them and
+just not say anything in the answer
+about them but you can also use a
+smaller model to just filter out what's
+irrelevant and summarize what's relevant
+so that your final big smart llm gets as
+little tokens as possible so that you
+save a bunch of
+money so in essence by using these
+techniques on rag systems you can have
+less context but in a good way so it's
+cheaper uh you can have more relevant
+context which allows you to send less of
+it which makes it cheaper and you can
+have custom embeddings that are both
+faster and cheaper
+like the embedding model itself but also
+more accurate at retrieving stuff so you
+can have more relevant context therefore
+shorter context so therefore cheaper so
+all these things work together for a
+really efficient rag system that you can
+actually provide value
+with yeah so we said um in the beginning
+we're going to use the Harry Potter
+dilemma for this so in the Harry poter
+dilemma if I ask you which candidate
+Harry Potter it then you only have to
+find the relevant information what
+happens if you really have to use all of
+the context right so if for example I
+need to rewrite the whole book tell the
+whole story of Harry Potter from one Ron
+Wiley's perspective then effec and
+assuming the LM was not trained on Harry
+Potter so it doesn't know Harry Potter
+right because this is introducing a bias
+for itself but um you actually have to
+put in all of the uh story because
+otherwise you cannot just look for the
+parts that Harry Potter or Ron wisley h
+is there you're going to miss out on
+information so um sometimes you do have
+to understand that you are going to use
+all of the large context uh for these
+cases and you know Google came up with
+their model recently uh actually not
+recently quite a few months ago gmany
+1.5 Pro and initially the it was for a
+million tokens and later on it included
+2 million tokens and this stuff can
+actually accommodate uh entire books
+inside which is great um of course
+you're not going to send all of the
+information but there are these task in
+which if you do send all of the
+information at once to the llm you are
+going to that's the only way for you to
+actually answer the the questions or uh
+perform the task that you had to do
+before that you have to do but um like
+we said it's going to be expensive so um
+how can you still reduce the cost and
+this is something quite recent uh so
+think about the case of the Harry Potter
+dilemma that we showed in which you're
+you want to ask multiple questions that
+require Harry Potter uh book to be put
+in entirely to the context very often if
+you are building an L application the
+task ex is going to be repeating itself
+so you're going to use a lot of uh uh
+tokens again and again by sending the
+whole of the Harry Potter book again and
+again and then what would change is
+maybe just the question that you're
+going to ask on top of that so one time
+you're going to ask tell me the story
+from the a hair May uh perspective and
+one time you're going to ask it from um
+a run wises perspective so what if you
+can just cache that result right every
+time use the same uh cached result of
+the entire Harry Potter book and just uh
+query the llm in a different way so
+apparently since last month this is
+possible with uh Gemini 1.5 so if you're
+working with Gemini on on Google you are
+capable of deciding on which parts you
+want to cache and then in the original
+setting every time you're sending a
+prompt plustic context and then you're
+you know uh the LM is going to do input
+processing and it's going to do generate
+a response and then it's going to do
+output uh in the case of caching what
+will happen is your cache is going to go
+directly to the generation of the
+response so you can actually have a a a
+mini rag within the llm which is great
+and uh there is this case
+um you have the name of the writer on on
+medium that already show that uh it can
+achieve some cost reduction it does not
+achieve full cost reduction you still
+pay for the generation so you're not
+going to see 95% cost reduction but you
+are seeing nice numbers uh especially
+compared to like uh not doing
+optimization at all so um caching is
+definitely a very interesting idea to to
+follow uh and we are sure that we're
+going to see this uh being implemented
+by other vendors uh as
+well um so I want to bring it uh bring
+it back home and try to wrap up what
+we've
+seen effectively what we wanted to
+convey to you is that AI in uh in AI
+cost is a
+dimension um and it is a dimension
+because maybe you will have a competitor
+developing an application with similar
+capabilities but because they're doing
+cost optimization they're going to solve
+it for less and if you think about the
+clarner case um the quality of the llm
+and the cost of it is something that is
+very it's going to be a differentiator
+between Solutions right you're doing it
+to achieve efficiency so the efficiency
+is is inherent to your model and this is
+something you don't always see uh in in
+other applications because sometimes you
+know cost is not the main differentiat
+between applications so we do think that
+cost in AI applications is more
+important than traditional software and
+uh some of the advances some of the cost
+reduction is not going to be thanks to
+you some of the advances are going to be
+thanks to companies like Nvidia coming
+up with new uh gpus somebody is going to
+be thanks to openi coming up with their
+new models or some of it is going to be
+thanks to uh liquidity in the markets of
+startups that are going to give you to
+use free free products to accumul to to
+gain a market share uh but what you can
+do is either use local optimization
+right think about reducing the size of
+your llm or optimizing your prompt um or
+doing some architectural decisions right
+uh reduce the uh uh or configure the the
+architecture in a way that is more
+suitable for your your case and kind of
+navigate the cost versus Fitness of your
+whole solution uh so you'll have more
+optimized results um what we at least
+notied is you're are either typically
+going to give give up in order to reduce
+cost you're typically going to give up e
+on breath so U your llm is going to be
+less generic it's going to be more
+specialized and that goes to the
+question of fine-tuning we didn't
+mention fine-tuning but um it is
+somewhere there between uh you know
+making your llm reduce uh size and then
+uh make it more specialized as a
+specific task or you're going to accept
+that the LM is going to be just uh more
+stupid and and to that we call uh depth
+so we hope that you enjoy this webinar
+and you learned something if you did uh
+do uh uh feel free to sign up to our mup
+group we will post this one uh on uh
+YouTube and everybody who register is
+going to get a link to this and um
+that's it we want to thank you all uh
+for coming and see you in the next
+webinar
